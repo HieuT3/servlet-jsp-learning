@@ -10,6 +10,7 @@
 	<body>
 		<jsp:include page="header.jsp"></jsp:include>
 		<br/>
+		<!-- Test -->
 		<div align="center">
 			<div align="center" style="width: 85%; margin: 0 auto">
 			<h2>New Books:</h2>
