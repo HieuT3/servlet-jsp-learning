@@ -25,7 +25,7 @@ import javax.persistence.TemporalType;
 	@NamedQuery(name = "Review.listAll", query = "select r from Review r order by r.reviewTime desc"),
 	@NamedQuery(name = "Review.countAll", query = "select count(*) from Review r")
 })
-public class Review implements java.io.Serializable {
+public class Review {
 
 	private Integer reviewId;
 	private Book book;

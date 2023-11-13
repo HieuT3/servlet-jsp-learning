@@ -16,6 +16,7 @@ import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.CategoryDAO;
 import com.bookstore.entity.Book;
 import com.bookstore.entity.Category;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class BookServices {
 	private HttpServletRequest request;
@@ -42,6 +43,12 @@ public class BookServices {
 		List<Book> listBook = bookDAO.listAll();
 		request.setAttribute("listBook", listBook);
 		request.getRequestDispatcher("book_list.jsp").forward(request, response);
+	}
+	
+	public void ListAllBookForCustomer() throws ServletException, IOException {
+		List<Book> listBook = bookDAO.listAll();
+		request.setAttribute("listBook", listBook);
+		request.getRequestDispatcher("frontend/book_list.jsp").forward(request, response);
 	}
 	
 	public void showNewBookForm() throws ServletException, IOException {
@@ -121,11 +128,14 @@ public class BookServices {
 	
 	public void listBookByCategory() throws ServletException, IOException {
 		Integer categoryId = Integer.parseInt(request.getParameter("id"));
-		Category category = categoryDAO.get(categoryId);
+
 		List<Book> list = bookDAO.listByCategory(categoryId);
-		request.setAttribute("category", category);
-		request.setAttribute("listBook", list);
-		request.getRequestDispatcher("frontend/book_category.jsp").forward(request, response);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String listJson = objectMapper.writeValueAsString(list);
+		System.out.println(listJson);
+		response.setContentType("application/json");
+	    response.setCharacterEncoding("UTF-8");
+	    response.getWriter().write(listJson);
 	}
 	
 	public void searchBook() throws ServletException, IOException {

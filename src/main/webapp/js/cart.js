@@ -35,8 +35,21 @@ $(document).ready(function(){
 		});
 	});
 	
-	$('.delete-btn').click(function(){
+	$('.delete-btn').on('click' ,function(event){
 		var id = $(this).data('item');
-		window.location.href = 'delete_item?id=' + id;
+		$.ajax({
+			type: 'GET',
+			async: false,
+			url: 'delete_item',
+			data: {
+				"id": id
+			},
+			success: function(response) {
+		        location.reload();
+			},
+			error: function() {
+				console.log(error);
+			}
+		});
 	});
 });

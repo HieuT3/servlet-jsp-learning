@@ -14,6 +14,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "category", catalog = "bookstoredb")
 @NamedQueries({
@@ -64,8 +66,9 @@ public class Category implements java.io.Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+ 
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "category")
+	@JsonManagedReference
 	public Set<Book> getBooks() {
 		return this.books;
 	}

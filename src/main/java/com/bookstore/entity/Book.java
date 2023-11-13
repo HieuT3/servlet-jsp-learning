@@ -1,5 +1,5 @@
 package com.bookstore.entity;
-// Generated Oct 9, 2023, 10:30:26 PM by Hibernate Tools 4.3.6.Final
+ // Generated Oct 9, 2023, 10:30:26 PM by Hibernate Tools 4.3.6.Final
 
 import java.util.Base64;
 import java.util.Date;
@@ -21,6 +21,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.Transient;
 
 /**
@@ -100,8 +105,9 @@ public class Book implements java.io.Serializable {
 	public void setBookId(Integer bookId) {
 		this.bookId = bookId;
 	}
-
+	
 	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonBackReference
 	@JoinColumn(name = "category_id", nullable = false)
 	public Category getCategory() {
 		return this.category;
@@ -130,6 +136,7 @@ public class Book implements java.io.Serializable {
 	}
 
 	@Column(name = "description", nullable = false, length = 16777215)
+	@JsonIgnore
 	public String getDescription() {
 		return this.description;
 	}
@@ -139,6 +146,7 @@ public class Book implements java.io.Serializable {
 	}
 
 	@Column(name = "isbn", nullable = false, length = 15)
+	@JsonIgnore
 	public String getIsbn() {
 		return this.isbn;
 	}
@@ -148,6 +156,7 @@ public class Book implements java.io.Serializable {
 	}
 
 	@Column(name = "image", nullable = false)
+	@JsonIgnore
 	public byte[] getImage() {
 		return this.image;
 	}
@@ -167,6 +176,7 @@ public class Book implements java.io.Serializable {
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "publish_date", nullable = false, length = 10)
+	@JsonIgnore
 	public Date getPublishDate() {
 		return this.publishDate;
 	}
@@ -175,8 +185,9 @@ public class Book implements java.io.Serializable {
 		this.publishDate = publishDate;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP)	
 	@Column(name = "last_update_time", nullable = false, length = 19)
+	@JsonIgnore
 	public Date getLastUpdateTime() {
 		return this.lastUpdateTime;
 	}
@@ -185,7 +196,8 @@ public class Book implements java.io.Serializable {
 		this.lastUpdateTime = lastUpdateTime;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "book")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "book")
+	@JsonIgnore
 	public Set<Review> getReviews() {
 		return this.reviews;
 	}
@@ -194,7 +206,8 @@ public class Book implements java.io.Serializable {
 		this.reviews = reviews;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "book")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "book")
+	@JsonIgnore
 	public Set<OrderDetail> getOrderDetails() {
 		return this.orderDetails;
 	}
@@ -204,6 +217,7 @@ public class Book implements java.io.Serializable {
 	}
 	
 	@Transient
+	@JsonIgnore
 	public String getBase64Image() {
 		this.base64Image = Base64.getEncoder().encodeToString(this.image);
 		return this.base64Image;
@@ -215,6 +229,7 @@ public class Book implements java.io.Serializable {
 	}
 	
 	@Transient
+	@JsonIgnore
 	public float getRatingAverage() {
 		float ratingAverage = 0.0f;
 		if(this.reviews.isEmpty()) return 0.0f;
@@ -225,6 +240,7 @@ public class Book implements java.io.Serializable {
 	} 
 	
 	@Transient
+	@JsonIgnore
 	public String getStar() {
 		float ratingAverage = this.getRatingAverage();
 		
@@ -232,6 +248,7 @@ public class Book implements java.io.Serializable {
 	}
 	
 	@Transient
+	@JsonIgnore
 	public String getRatingStar(float rating) {
 		float ratingAverage = rating;
 		String ans = "";
