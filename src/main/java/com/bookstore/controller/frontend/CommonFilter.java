@@ -43,7 +43,10 @@ public class CommonFilter extends HttpFilter implements Filter {
 		String path = httpRequest.getRequestURI().substring(httpRequest.getContextPath().length());
 		if(!path.contains("/admin/")) {
 			List<Category> listCate = categoryDAO.listAll();
+			int sum = 0;
+			for(Category category : listCate) sum += category.getBooks().size();
 			request.setAttribute("listCate", listCate);
+			request.setAttribute("sizeListCate", sum);
 		}
 		chain.doFilter(request, response);
 	}

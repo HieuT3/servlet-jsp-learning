@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +64,6 @@
 	                    <div class="right-product-box">
 	                        <div class="product-item-filter row">
 	                            <div class="col-12 col-sm-6 text-center text-sm-left">
-	                                <p style="font-size: 20px;">Showing all results</p>
 	                            </div>
 	                            <div class="col-12 col-sm-4 text-center text-sm-right">
 	                                <ul class="nav nav-tabs ml-auto">
@@ -80,62 +80,12 @@
 	                        <div class="product-categorie-box">
 	                            <div class="tab-content">
 	                                <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
-	                                    <div class="row">
-	                                    	<c:forEach var="book" items="${listBook}">
-		                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-		                                            <div class="products-single fix">
-		                                                <div class="box-img-hover">
-		                                                    <div class="type-lb">
-		                                                        <p class="sale">Sale</p>
-		                                                    </div>
-		                                                    <img style="width: 260px; height: 300px;" src="data:image/jpg;base64,${book.base64Image}" class="img-fluid" alt="Image">
-		                                                    <div class="mask-icon">
-		                                                        <ul>
-		                                                            <li><a href="./view_book?id=${book.bookId}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-		                                                        </ul>
-		                                                        <a class="cart" href="#">Add to Cart</a>
-		                                                    </div>
-		                                                </div>
-		                                                <div class="why-text">
-		                                                    <h4><a href="view_book?id=${book.bookId}">${book.title}</a></h4>
-		                                                    <h5> $${book.price}</h5>
-		                                                </div>
-		                                            </div>
-		                                        </div>
-	                                       	</c:forEach>
+	                                    <div class="content-wrapper-grid row">
+	                                    	
 	                                    </div>
 	                                </div>
-	                                <div role="tabpanel" class="tab-pane fade" id="list-view">
-	                                	<c:forEach var="book" items="${listBook}">
-		                                    <div class="list-view-box">
-		                                        <div class="row">
-		                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-		                                                <div class="products-single fix">
-		                                                    <div class="box-img-hover">
-		                                                        <div class="type-lb">
-		                                                            <p class="sale">Sale</p>
-		                                                        </div>
-		                                                        <img src="data:image/jpg;base64,${book.base64Image}" class="img-fluid" alt="Image">
-		                                                        <div class="mask-icon">
-		                                                            <ul>
-		                                                                <li><a href="./view_book?id=${book.bookId}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-		                                                            </ul>
-		
-		                                                        </div>
-		                                                    </div>
-		                                                </div>
-		                                            </div>
-		                                            <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-		                                                <div class="why-text full-width">
-		                                                    <h4>${book.title}</h4>
-		                                                    <h5> <del>$ 60.00</del> ${book.price}</h5>
-		                                                    <p class="book-desc">${book.description}</p>
-		                                                    <a class="btn hvr-hover" href="#">Add to Cart</a>
-		                                                </div>
-		                                            </div>
-		                                        </div>
-		                                    </div>
-	                                    </c:forEach>
+	                                <div role="tabpanel" class="content-wrapper-list tab-pane fade" id="list-view">
+	                                
 	                                </div>
 	                            </div>
 	                        </div>
@@ -144,20 +94,25 @@
 					<div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
 	                    <div class="product-categori">
 	                        <div class="search-product">
-	                            <form action="#">
-	                                <input class="form-control" placeholder="Search here..." type="text">
-	                                <button type="submit"> <i class="fa fa-search"></i> </button>
-	                            </form>
+	                            <input id="search-input" class="form-control" placeholder="Search here..." type="text">
+	                            <button id="search-btn"> <i class="fa fa-search"></i> </button>
 	                        </div>
 	                        <div class="filter-sidebar-left">
 	                            <div class="title-left">
 	                                <h3>Categories</h3>
 	                            </div>
 	                            <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
-	                            	<c:forEach var="category" items="${listCate}">
-	                                	<a href="#" data-category="${category.categoryId}" class="view-category list-group-item list-group-item-action">${category.name}</a>
-	                                </c:forEach>
-	                            </div>
+	                                <div class="list-group-collapse sub-men">
+                                    	<a class="view-category list-group-item list-group-item-action" data-category="0" href="#" data-toggle="collapse">All <small class="text-muted">(${sizeListCate})</small></a>
+                                    	<div class="collapse show" id="sub-men" data-parent="#list-group-men">
+                                        <div class="list-group">
+                                        	<c:forEach var="category" items="${listCate}">
+                                            	<a href="#" data-category="${category.categoryId}" class="view-category list-group-item list-group-item-action">${category.name}<small class="text-muted">(${fn:length(category.books)})</small></a>
+                                        	</c:forEach>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
 	                        </div>
 	                    </div>
 	                </div>
@@ -165,6 +120,12 @@
 	        </div>
 	    </div>
 	    <!-- End Shop Page -->
+	   
+	   	<!-- Modal Load -->
+
+		<div class="modal" id="myModal">
+			<div class="lds-dual-ring"></div>
+		</div>
 	      
 	    <jsp:include page="footer.jsp"></jsp:include>
 	

@@ -136,7 +136,6 @@ public class Book implements java.io.Serializable {
 	}
 
 	@Column(name = "description", nullable = false, length = 16777215)
-	@JsonIgnore
 	public String getDescription() {
 		return this.description;
 	}
@@ -217,7 +216,6 @@ public class Book implements java.io.Serializable {
 	}
 	
 	@Transient
-	@JsonIgnore
 	public String getBase64Image() {
 		this.base64Image = Base64.getEncoder().encodeToString(this.image);
 		return this.base64Image;

@@ -2,10 +2,12 @@ package com.bookstore.service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.Normalizer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -47,8 +49,12 @@ public class BookServices {
 	
 	public void ListAllBookForCustomer() throws ServletException, IOException {
 		List<Book> listBook = bookDAO.listAll();
-		request.setAttribute("listBook", listBook);
-		request.getRequestDispatcher("frontend/book_list.jsp").forward(request, response);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String listBookJson = objectMapper.writeValueAsString(listBook);
+		System.out.println(listBookJson);
+		response.setContentType("application/json");
+	    response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(listBookJson);
 	}
 	
 	public void showNewBookForm() throws ServletException, IOException {
@@ -132,7 +138,6 @@ public class BookServices {
 		List<Book> list = bookDAO.listByCategory(categoryId);
 		ObjectMapper objectMapper = new ObjectMapper();
 		String listJson = objectMapper.writeValueAsString(list);
-		System.out.println(listJson);
 		response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");
 	    response.getWriter().write(listJson);
@@ -140,9 +145,14 @@ public class BookServices {
 	
 	public void searchBook() throws ServletException, IOException {
 		String keyword = request.getParameter("keyword");
-		List<Book> listBook = bookDAO.search(keyword);
-		request.setAttribute("keyword", keyword);
-		request.setAttribute("listBook", listBook);
-		request.getRequestDispatcher("frontend/search_book.jsp").forward(request, response);
+		String normalized = Normalizer.normalize(keyword.toLowerCase(), Normalizer.Form.NFD);
+		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+		String normalizedKeyword = pattern.matcher(normalized).replaceAll("");
+		List<Book> listBook = bookDAO.search(normalizedKeyword);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String listBookJson = objectMapper.writeValueAsString(listBook);
+		response.setContentType("application/json");
+	    response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(listBookJson);
 	}
 }
