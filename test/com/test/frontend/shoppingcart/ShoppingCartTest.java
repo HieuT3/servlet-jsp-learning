@@ -22,6 +22,13 @@ public class ShoppingCartTest {
 	public static void setUpBeforeClass() throws Exception {
 		bookDAO = new BookDAO();
 		shoppingCart = new ShoppingCart();
+		Book book1 = new Book(1);
+		Book book2 = new Book(2);
+		Book book3 = new Book(3);
+		shoppingCart.addItem(book1);
+		shoppingCart.addItem(book1);
+		shoppingCart.addItem(book2);
+		shoppingCart.addItem(book3);
 	}
 
 	@AfterClass
@@ -64,6 +71,11 @@ public class ShoppingCartTest {
 		
 		Map<Book, Integer> cart = shoppingCart.getItems();
 		assertTrue(cart.size() == 0);
+	}
+	
+	@Test
+	public void testUpdateCart() {
+		
 	}
 
 }

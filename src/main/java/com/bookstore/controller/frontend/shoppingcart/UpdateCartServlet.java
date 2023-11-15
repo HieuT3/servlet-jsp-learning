@@ -1,4 +1,4 @@
-package com.bookstore.controller.frontend.customer;
+package com.bookstore.controller.frontend.shoppingcart;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bookstore.service.CustomerServices;
+import com.bookstore.service.CartServices;
 
 /**
- * Servlet implementation class RegisterCustomerServlet
+ * Servlet implementation class UpdateCartServlet
  */
-@WebServlet("/register_customer")
-public class RegisterCustomerServlet extends HttpServlet {
+@WebServlet("/update_cart")
+public class UpdateCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegisterCustomerServlet() {
+    public UpdateCartServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,15 +28,16 @@ public class RegisterCustomerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CustomerServices customerServices = new CustomerServices(request, response);
-		customerServices.registerCustomer();
+		CartServices cartServices = new CartServices(request, response);
+		cartServices.updateCart();
 	}
 
 }

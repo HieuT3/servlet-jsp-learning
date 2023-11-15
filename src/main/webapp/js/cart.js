@@ -44,11 +44,35 @@ $(document).ready(function(){
 			data: {
 				"id": id
 			},
-			success: function(response) {
+			success: function() {
 		        location.reload();
 			},
 			error: function() {
 				console.log(error);
+			}
+		});
+	});
+	
+	$('.update-btn').on('click', function(){
+		var ids = document.querySelectorAll('.qty-item');
+		var bookIds = [];
+		ids.forEach(function(id){
+			bookIds.push(id.value);
+		});
+		var str = bookIds.join(',');
+		
+		$.ajax({
+			type: 'POST',
+			async: false,
+			url: 'update_cart',
+			data: {
+				'bookIds': str
+			},
+			success: function() {
+				location.reload();
+			}, 
+			error: function() {
+				
 			}
 		});
 	});

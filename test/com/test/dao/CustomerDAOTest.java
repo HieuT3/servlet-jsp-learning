@@ -37,10 +37,7 @@ public class CustomerDAOTest {
 		customer.setEmail("hieu@gmail.com");
 		customer.setFullname("Cao Ba Hieu");
 		customer.setAddress("KK");
-		customer.setCity("HN");
-		customer.setCountry("VN");
 		customer.setPhone("0123456789");
-		customer.setZipcode("0000");
 		customer.setPassword("123456");
 		customer.setRegisterDate(new Date());
 		
@@ -54,12 +51,9 @@ public class CustomerDAOTest {
 		Integer customerId = 11;
 		Customer customer = customerDAO.get(customerId);
 		customer.setAddress("Kieu Ky");
-		customer.setCity("Ha Noi");
-		customer.setCountry("Viet Nam");
 		
 		Customer updatedCustomer = customerDAO.update(customer);
 		
-		assertEquals("Viet Nam", updatedCustomer.getCountry());
 	}
 	
 	@Test

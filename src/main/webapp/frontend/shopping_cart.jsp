@@ -59,7 +59,7 @@
 					<h1 style="font-size: 40px;">Your cart is empty. Keep shopping to find a product!</h1>
 				</div>
 				<div style="margin: 30px 0;">
-					<a style="font-size: 25px; color: #fff;" class="btn hvr-hover" href="#">Continue Shopping</a>
+					<a style="font-size: 25px; color: #fff;" class="btn hvr-hover" href="./list_books">Continue Shopping</a>
 				</div>
 			</div>
 		</c:if>	
@@ -83,6 +83,7 @@
 		                                </tr>
 		                            </thead>
 		                            <tbody>
+		                            	
 		                            	<c:set var="items" value="${cart.getItems()}"></c:set>
 		                            	<c:forEach var="item" items="${items}" varStatus="status">
 			                                <tr>
@@ -97,7 +98,7 @@
 			                                    <td class="price-pr">
 			                                        <p>$${item.key.price}</p>
 			                                    </td>
-			                                    <td class="quantity-box"><input type="number" size="4" value="${item.value}" min="0" step="1" class="c-input-text qty text"></td>
+			                                    <td class="quantity-box"><input type="number" name="${item.key.bookId}" size="4" value="${item.value}" min="0" step="1" class="qty-item c-input-text qty text"></td>
 			                                    <td class="total-pr">
 			                                        <p>$<fmt:formatNumber value="${item.key.price * item.value}"></fmt:formatNumber></p>
 			                                    </td>
@@ -117,11 +118,10 @@
 		                </div>
 		                <div class="col-lg-6 col-sm-6">
 		                    <div class="update-box">
-		                        <input value="Update Cart" type="submit">
+		                        <input class="update-btn" value="Update Cart" type="submit">
 		                    </div>
 		                </div>
 		            </div>
-		
 		            <div class="row my-5">
 		                <div class="col-lg-8 col-sm-12"></div>
 		                <div class="col-lg-4 col-sm-12">

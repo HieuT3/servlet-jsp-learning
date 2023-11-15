@@ -35,10 +35,7 @@ public class Customer implements java.io.Serializable {
 	private String email;
 	private String fullname;
 	private String address;
-	private String city;
-	private String country;
 	private String phone;
-	private String zipcode;
 	private String password;
 	private Date registerDate;
 	private Set<Review> reviews = new HashSet<Review>(0);
@@ -51,40 +48,28 @@ public class Customer implements java.io.Serializable {
 		this.customerId = customerId;
 	}
 
-	public Customer(String email, String fullname, String address, String city, String country, String phone,
-			String zipcode, String password, Date registerDate) {
+	public Customer(String email, String fullname, String address, String phone, String password, Date registerDate) {
 		this.email = email;
 		this.fullname = fullname;
 		this.address = address;
-		this.city = city;
-		this.country = country;
 		this.phone = phone;
-		this.zipcode = zipcode;
 		this.password = password;
 		this.registerDate = registerDate;
 	}
 	
-	public Customer(String email, String fullname, String address, String city, String country, String phone,
-			String zipcode, String password) {
+	public Customer(String email, String fullname, String address, String phone, String password) {
 		this.email = email;
 		this.fullname = fullname;
 		this.address = address;
-		this.city = city;
-		this.country = country;
 		this.phone = phone;
-		this.zipcode = zipcode;
 		this.password = password;
 	}
 
-	public Customer(String email, String fullname, String address, String city, String country, String phone,
-			String zipcode, String password, Date registerDate, Set<Review> reviews, Set<BookOrder> bookOrders) {
+	public Customer(String email, String fullname, String address, String phone, String password, Date registerDate, Set<Review> reviews, Set<BookOrder> bookOrders) {
 		this.email = email;
 		this.fullname = fullname;
 		this.address = address;
-		this.city = city;
-		this.country = country;
 		this.phone = phone;
-		this.zipcode = zipcode;
 		this.password = password;
 		this.registerDate = registerDate;
 		this.reviews = reviews;
@@ -121,7 +106,7 @@ public class Customer implements java.io.Serializable {
 		this.fullname = fullname;
 	}
 
-	@Column(name = "address", nullable = false, length = 128)
+	@Column(name = "address", length = 128)
 	public String getAddress() {
 		return this.address;
 	}
@@ -130,25 +115,7 @@ public class Customer implements java.io.Serializable {
 		this.address = address;
 	}
 
-	@Column(name = "city", nullable = false, length = 32)
-	public String getCity() {
-		return this.city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	@Column(name = "country", nullable = false, length = 64)
-	public String getCountry() {
-		return this.country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	@Column(name = "phone", nullable = false, length = 15)
+	@Column(name = "phone", length = 15)
 	public String getPhone() {
 		return this.phone;
 	}
@@ -156,16 +123,7 @@ public class Customer implements java.io.Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	@Column(name = "zipcode", nullable = false, length = 24)
-	public String getZipcode() {
-		return this.zipcode;
-	}
-
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
-
+	
 	@Column(name = "password", nullable = false, length = 16)
 	public String getPassword() {
 		return this.password;

@@ -10,7 +10,6 @@
                 </div>
                 <div class="our-link">
                     <ul>
-                        <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản của bạn</a></li>
                         <li><a href="#"><i class="fas fa-location-arrow"></i> Vị trí</a></li>
                         <li><a href="#"><i class="fas fa-headset"></i> Liên hệ với chúng tôi</a></li>
                     </ul>
@@ -18,10 +17,18 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 				<div class="login-box">
-					<select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-						<option>Đăng kí</option>
-						<option>Đăng nhập</option>
-					</select>
+					<c:if test="${sessionScope.loggedCustomer == null}">
+						<button class="button" id="form-open">Login</button>
+					</c:if>
+					<c:if test="${sessionScope.loggedCustomer != null}">
+						<div class="my-account">
+							<i class="fas fa-user"></i>
+							<ul class="list">
+                                <li><a href="my-account.html">Tài khoản của tôi</a></li>
+                                <li><a href="wishlist.html">Logout</a></li>
+                            </ul>
+						</div>
+					</c:if>
 				</div>
 	            <div class="text-slid-box">
 	                <div id="offer-box" class="carouselTicker">

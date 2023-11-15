@@ -1,6 +1,7 @@
 package com.bookstore.service;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -56,7 +57,7 @@ public class CartServices {
 		shoppingCart.removeItemById(bookId);
 		
 		request.getSession().setAttribute("cart", shoppingCart);
-		response.sendRedirect("view_cart");
+		
 	}
 	
 	public void clearCart() throws IOException {
@@ -64,5 +65,24 @@ public class CartServices {
 		shoppingCart.clear();
 		request.getSession().setAttribute("cart", shoppingCart);
 		response.sendRedirect("view_cart");
+	}
+	
+	public void updateCart() {
+		ShoppingCart shoppingCart = (ShoppingCart) request.getSession().getAttribute("cart");
+		Map<Book, Integer> cart = shoppingCart.getItems();
+		String[] ids = request.getParameter("bookIds").split(",");
+		int size = ids.length;
+		int[] bookIds = new int[size];
+		int[] quantities = new int[size];
+		int cnt = 0;
+		for(Map.Entry<Book, Integer> entry : cart.entrySet()) {
+			int bookId = entry.getKey().getBookId();
+			int quatity = Integer.parseInt(ids[cnt]);
+			bookIds[cnt] = bookId;
+			quantities[cnt] = quatity;
+			cnt++;
+		}
+		shoppingCart.updateCart(bookIds, quantities);
+		request.getSession().setAttribute("cart", shoppingCart);
 	}
 }

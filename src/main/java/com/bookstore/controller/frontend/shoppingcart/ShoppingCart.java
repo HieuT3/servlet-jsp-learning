@@ -67,6 +67,13 @@ public class ShoppingCart {
 	}
 	
 	public void updateCart(int[] bookIds, int[] quantities) {
-		
+		for(int i = 0; i < bookIds.length; i++) {
+			if(quantities[i] == 0) removeItemById(bookIds[i]);
+			else {
+				BookDAO bookDAO = new BookDAO();
+				Book book = bookDAO.get(bookIds[i]);
+				cart.put(book, quantities[i]);
+			}
+		}
 	}
 }

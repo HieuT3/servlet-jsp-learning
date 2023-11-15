@@ -34,11 +34,6 @@ public class CustomerServices {
 		String email = request.getParameter("email");
 		String fullName = request.getParameter("fullname");
 		String password = request.getParameter("password");
-		String phone = request.getParameter("phone");
-		String address = request.getParameter("address");
-		String city = request.getParameter("city");
-		String zipcode = request.getParameter("zipcode");
-		String country = request.getParameter("country");
 
 		if(email != null && !email.equals("")) {
 			customer.setEmail(email);
@@ -47,11 +42,6 @@ public class CustomerServices {
 		if(password != null && !password.equals("")) {
 			customer.setPassword(password);
 		}
-		customer.setPhone(phone);
-		customer.setAddress(address);
-		customer.setCity(city);
-		customer.setZipcode(zipcode);
-		customer.setCountry(country);
 	}
 	
 	public void createCustomer() throws ServletException, IOException {

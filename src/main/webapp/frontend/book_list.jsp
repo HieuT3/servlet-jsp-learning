@@ -29,7 +29,6 @@
 	    <link rel="stylesheet" href="css/responsive.css">
 	    <!-- Custom CSS -->
 	    <link rel="stylesheet" href="css/custom.css">
-	
 	    <!--[if lt IE 9]>
 	      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -123,7 +122,7 @@
 	   
 	   	<!-- Modal Load -->
 
-		<div class="modal" id="myModal">
+		<div class="modal" id="modal-load">
 			<div class="lds-dual-ring"></div>
 		</div>
 	      
