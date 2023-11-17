@@ -36,6 +36,8 @@
 	<body>
 		<jsp:include page="header.jsp"></jsp:include>
 		
+		<fmt:setLocale value="en_US"/>
+		
 		<!-- Start All Title Box -->
 	    <div class="all-title-box">
 	        <div class="container">
@@ -100,7 +102,7 @@
 			                                    </td>
 			                                    <td class="quantity-box"><input type="number" name="${item.key.bookId}" size="4" value="${item.value}" min="0" step="1" class="qty-item c-input-text qty text"></td>
 			                                    <td class="total-pr">
-			                                        <p>$<fmt:formatNumber value="${item.key.price * item.value}"></fmt:formatNumber></p>
+			                                        <p>$<fmt:formatNumber maxFractionDigits="2" type="number" value="${item.key.price * item.value}"></fmt:formatNumber></p>
 			                                    </td>
 			                                    <td class="remove-pr">
 			                                        <p style="cursor: pointer;"><i data-item="${item.key.bookId}" class="fas fa-times delete-btn"></i></p>
@@ -154,7 +156,7 @@
 		                        </div>
 		                        <hr> </div>
 		                </div>
-		                <div class="col-12 d-flex shopping-box"><a href="checkout.html" class="ml-auto btn hvr-hover">Checkout</a> </div>
+		                <div class="col-12 d-flex shopping-box"><a href="./checkout" class="ml-auto btn hvr-hover">Checkout</a> </div>
 		            </div>
 		
 		        </div>
@@ -171,6 +173,7 @@
 	    <script src="js/popper.min.js"></script>
 	    <script src="js/bootstrap.min.js"></script>
 	    <!-- ALL PLUGINS -->
+	    <script src="js/home.js"></script>
 	    <script src="js/jquery.superslides.min.js"></script>
 	    <script src="js/bootstrap-select.js"></script>
 	    <script src="js/inewsticker.js"></script>

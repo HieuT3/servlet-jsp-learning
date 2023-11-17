@@ -1,26 +1,26 @@
 package com.bookstore.controller.frontend;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bookstore.service.CustomerServices;
+import com.bookstore.entity.Customer;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class CheckLoginStatusServlet
  */
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/check_login_status")
+public class CheckLoginStatusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public CheckLoginStatusServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,15 +29,22 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		ObjectMapper objectMapper = new ObjectMapper();
+		Customer customer = (Customer) request.getSession(false).getAttribute("loggedCustomer");
+		String object = "";
+		if(customer != null) object = "object";
+		else object = "null";
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(object);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CustomerServices customerServices = new CustomerServices(request, response);
-		customerServices.doLogin();
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

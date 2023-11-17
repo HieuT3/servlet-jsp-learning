@@ -163,7 +163,7 @@
 /*------------------------------------------------------------------ HEADER -------------------------------------------------------------------*/
  .main-top{
      background: #000000;
-     padding: 16px 0px;
+     padding: 18px 0px;
 }
  .custom-select-box{
      float: left;
@@ -272,22 +272,69 @@
 }
 
 .login-box .my-account {
+	position: relative;
+}
+
+.login-box .my-account .avatar{
 	position: absolute;
+    top: 6px;
+    left: 6px;
+	color: #000000;
+	font-size: 18px;
+}
+
+.login-box .my-account .profile{
+	width: 2rem; 
+	height: 2rem; 
 	background-color: #ffffff;
-	width: 30px;
-	height: 30px;
-	right: 40px;
 	border-radius: 50%;
-	z-index: 1000;
+}
+
+.login-box .sub-account{
+	display: none;
+	min-width: 136px;
+    position: absolute;
+    right: 0;
+    top: 32px;
+    z-index: 10;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.login-box .sub-account a {
+    color: #000;
+    padding: 0 12px;
+    line-height: 38px;
+}
+
+.login-box .my-account:hover .sub-account {
+	display: block;
+}
+
+.acc-profile {
+	padding: 12px; 
+	color: #000000; 
+	border-bottom: 1px solid #d1d7dc;
+}
+
+.sub-account li{
 	cursor: pointer;
 }
 
-.login-box .my-account i{
-    position: absolute;
-    top: 7px;
-    bottom: 0;
-    right: 8px;
+.sub-account li a{
+	display: block;
 }
+
+.sub-account li:hover{
+	color: #000;
+    background-color: #ccc;
+}
+
+.acc-profile .acc-user {
+	font-size: 18px; 
+	font-weight: 700;
+}
+
 .login-box .form-control{
      background: none;
      border: none;
@@ -339,7 +386,7 @@
 */
 .button {
   color: #fff;
-  padding: 6px 24px;
+  padding: 1px 24px;
   border: 2px solid #fff;
   background: transparent;
   border-radius: 6px;
@@ -483,6 +530,24 @@
   font-size: 12px;
   text-align: center;
   margin-top: 15px;
+}
+
+.alert-login {
+	display: none; 
+	align-items: center; 
+	width: 1140px; 
+	margin: 40px auto 0 auto; 
+	background-color: #acd2cc; 
+	padding: 12px 20px; 
+	font-size: 20px; 
+	color: #2D2F31;
+}
+
+.alert-login .alert-content {
+	margin: 0 0 0 10px;
+	padding: 10px 0; 
+	font-size: 20px;
+	display: inline-block;
 }
 
  .search a{
@@ -2277,7 +2342,7 @@
      background: #b0b435;
 }
  .order-box h3{
-     font-size: 16px;
+     font-size: 18px;
      color: #222222;
      font-weight: 700;
 }

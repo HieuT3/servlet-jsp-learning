@@ -72,8 +72,13 @@ const formOpenBtn = document.querySelector("#form-open"),
   loginBtn = document.querySelector("#login"),
   pwShowHide = document.querySelectorAll(".pw_hide");
 
-formOpenBtn.addEventListener("click", () => modalForm.style.display = 'flex');
-formCloseBtn.addEventListener("click", () => modalForm.style.display = 'none');
+if(formOpenBtn != null) {
+	formOpenBtn.addEventListener("click", () => modalForm.style.display = 'flex');
+}
+
+if(formCloseBtn != null) {
+	formCloseBtn.addEventListener("click", () => modalForm.style.display = 'none');
+}
 
 pwShowHide.forEach((icon) => {
   icon.addEventListener("click", () => {
@@ -97,3 +102,7 @@ loginBtn.addEventListener("click", (e) => {
   formContainer.classList.remove("active");
 });
 
+var profileBtn = document.querySelector('.acc-profile');
+profileBtn.addEventListener('click', function(){
+	window.location.href = 'view_profile';
+});

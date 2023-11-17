@@ -1,40 +1,4 @@
 $(document).ready(function(){
-	$('.add-btn').click(function(){
-		var id = $(this).data('item');
-		$.ajax({
-			type: 'GET',
-			async: false,
-			url: 'add_to_cart',
-			data: {
-				'bookId': id
-			},
-			success: function(data, textStatus, jqXHR) {
-					location.reload();
-			},
-			error: function(jqXHR, textStatus, error) {
-				console.log(error);
-			}
-		});
-	});
-	
-	$('.minus-btn').click(function(){
-		var id = $(this).data('item');
-		$.ajax({
-			type: 'GET',
-			async: false,
-			url: 'add_to_cart',
-			data: {
-				"bookId": (-1) * id
-			},
-			success: function(data, textStatus, jqXHR) {
-					location.reload();
-			},
-			error: function(jqXHR, textStatus, error) {
-				console.log(error);
-			}
-		});
-	});
-	
 	$('.delete-btn').on('click' ,function(event){
 		var id = $(this).data('item');
 		$.ajax({
@@ -77,3 +41,21 @@ $(document).ready(function(){
 		});
 	});
 });
+
+
+function checkLoginStatus() {
+	fetch('check_login_status')
+    .then(response => response.text())
+    .then(data => {
+        if(data == 'null') {
+			document.querySelector('.alert-login').style.display = 'flex';
+			document.querySelector('.form-checkout').setAttribute('style', 'opacity: 0.5; pointer-events: none');
+		}
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+var url = window.location.pathname;
+if(url.includes('checkout')) {
+	checkLoginStatus();
+}

@@ -116,10 +116,6 @@ public class CustomerServices {
 		}
 	}
 	
-	public void showLogin() throws ServletException, IOException {
-		request.getRequestDispatcher("frontend/login.jsp").forward(request, response);
-	}
-	
 	public void doLogin() throws IOException, ServletException {
 		request.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("email");
@@ -128,7 +124,8 @@ public class CustomerServices {
 		if(customer != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loggedCustomer", customer);
-			response.sendRedirect("./");
+			String url = request.getHeader("referer");
+			response.sendRedirect(url);
 		} else {
 			String message = "The email or password error";
 			request.setAttribute("message", message);

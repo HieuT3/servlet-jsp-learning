@@ -51,7 +51,6 @@ public class BookServices {
 		List<Book> listBook = bookDAO.listAll();
 		ObjectMapper objectMapper = new ObjectMapper();
 		String listBookJson = objectMapper.writeValueAsString(listBook);
-		System.out.println(listBookJson);
 		response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(listBookJson);

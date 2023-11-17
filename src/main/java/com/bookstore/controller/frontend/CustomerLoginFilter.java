@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 public class CustomerLoginFilter extends HttpFilter implements Filter {
     
 	private static String[] logInRequestURL = {
-			"/view_profile", "/edit_profile", "/update_profile", "/checkout", "/place_order", "/view_orders", "/view_detail_order"
+			"/view_profile", "/edit_profile", "/update_profile", "/place_order", "/view_orders", "/view_detail_order"
 	};
 	
     public CustomerLoginFilter() {

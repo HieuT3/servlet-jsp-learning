@@ -22,10 +22,19 @@
 					</c:if>
 					<c:if test="${sessionScope.loggedCustomer != null}">
 						<div class="my-account">
-							<i class="fas fa-user"></i>
-							<ul class="list">
-                                <li><a href="my-account.html">Tài khoản của tôi</a></li>
-                                <li><a href="wishlist.html">Logout</a></li>
+							<a href="#" class="acc-hover">
+								<div class="profile">
+									<i class="fas fa-user avatar"></i>
+								</div>
+							</a>
+							<ul class="sub-account">
+                                <li>
+                                	<div class="acc-profile">
+                                		<div class="acc-user">${sessionScope.loggedCustomer.fullname}</div>
+                                		<div class="acc-email">${sessionScope.loggedCustomer.email}</div>
+                                	</div>
+                                </li>
+                                <li><a href="logout">Logout</a></li>
                             </ul>
 						</div>
 					</c:if>
@@ -144,3 +153,58 @@
     </div>
 </div>
 <!-- End Top Search -->
+
+<div class="modal" id="modal-form">
+  <div class="form_container">
+    <i class="fas fa-times form_close"></i>
+    <!-- Login From -->
+    <div class="form login_form">
+      <form action="login" method="post">
+        <h2><b>Login</b></h2>
+        <div class="input_box">
+          <input type="email" name="email" placeholder="Enter your email" required />
+          <i class="far fa-envelope email"></i>
+        </div>
+        <div class="input_box">
+          <input type="password" name="password" placeholder="Enter your password" required />
+          <i class="fas fa-lock password"></i>
+          <i class="far fa-eye-slash pw_hide"></i>
+        </div>
+        <div class="option_field">
+          <span class="checkbox">
+            <input type="checkbox" id="check" />
+            <label for="check">Remember me</label>
+          </span>
+          <a href="#" class="forgot_pw">Forgot password?</a>
+        </div>
+        <button class="button">Login Now</button>
+        <div class="login_signup"><a href="#" id="signup">Don't have an account? Signup</a></div>
+      </form>
+    </div>
+    <!-- Signup From -->
+    <div class="form signup_form">
+      <form action="register_customer" method="post">
+        <h2>Signup</h2>
+        <div class="input_box">
+          <input type="text" name="fullname" placeholder="Enter your fullname" required />
+          <i class="far fa-user fullname"></i>
+        </div>
+        <div class="input_box">
+          <input type="email" name="email" placeholder="Enter your email" required />
+          <i class="far fa-envelope email"></i>
+        </div>
+        <div class="input_box">
+          <input type="password" name="password" placeholder="Create password" required />
+          <i class="fas fa-lock password"></i>
+          <i class="far fa-eye-slash pw_hide"></i>
+        </div>
+        <div class="input_box">
+          <input type="password" name="rePassword" placeholder="Confirm password" required />
+          <i class="fas fa-lock password"></i>
+        </div>
+        <button class="button">Signup Now</button>
+        <div class="login_signup"><a href="#" id="login">Already have an account? Login</a></div>
+      </form>
+    </div>
+  </div>
+</div>
