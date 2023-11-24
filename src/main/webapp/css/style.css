@@ -292,7 +292,7 @@
 
 .login-box .sub-account{
 	display: none;
-	min-width: 136px;
+	min-width: 170px;
     position: absolute;
     right: 0;
     top: 32px;
@@ -316,6 +316,11 @@
 	color: #000000; 
 	border-bottom: 1px solid #d1d7dc;
 }
+
+.sub-account {
+	min-width: 120px;
+}
+
 
 .sub-account li{
 	cursor: pointer;
@@ -425,6 +430,19 @@
   transition: all 0.4s ease-out;
   pointer-events: auto;
   transform: translate(-50%, -50%) scale(1);
+}
+
+.alert-form-signin,
+.alert-form-signup {
+	display: none; 
+	background-color: #fcbca0; 
+	margin-top: 16px;
+}
+
+.login-failed,
+.signup-failed {
+	display: inline-block; 
+	padding: 14px;
 }
 
 .signup_form {
@@ -2316,6 +2334,8 @@
      background: #b0b435;
 }
  .update-box input[type="submit"]{
+	 position: absolute;
+	 right: 0;
      background: #000000;
      border: medium none;
      border-radius: 0;
@@ -2323,7 +2343,6 @@
      box-shadow: none;
      color: #fff;
      display: inline-block;
-     float: right;
      cursor: pointer;
      font-size: 16px;
      font-weight: 500;
@@ -2858,23 +2877,158 @@
 	font-size: 120px;
 }
 
+/*
+	Product View Page
+*/
 
+.product-details{
+    max-width: 1200px;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 50px auto;
+}
+.product-img{
+	display: flex; 
+	justify-content: center;
+    width: 100%;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+.image-book {
+	margin: 30px 0;
+}
 
+.img-social-bar{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:20px 10px;
+    box-shadow: 2px 16px 30px rgba(0,0,0,0.08);
+    z-index: 101;
+}
+.img-social-bar a{
+    color: #5e5e5e;
+    margin: 20px 10px;
+    transition: all ease 0.3s;
+}
+.img-social-bar a:hover{
+    color: #181818;
+}
+.product-text{
+    background-color: #ffffff;
+    padding: 60px;
+    position: relative;
+}
+.product-text .product-category{
+    color: #5e5e5e;
+    font-size: 1.6rem;
+}
+.product-text h3{
+    color: #252525;
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin: 10px 0px;
+}
+.product-text .product-price{
+    font-size: 1.6rem;
+    color: #252525;
+    font-weight: 500;
+}
+.product-text p{
+    margin: 6px 0 50px 0;
+    color: #5e5e5e;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+.product-size-container strong{
+    color: #252525;
+    font-size:1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #252525;
+}
+.product-size{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.product-size label{
+    font-size: 1.1rem;
+    background-color: #f7f7f7;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    margin-right:10px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.s-checkbox:checked + .s-label{
+    background-color: #1f2124;
+    color: #ffffff;
+}
+.s-checkbox{
+    display: none;
+}
+.product-button{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 30px 0px;
+    margin-bottom: 20px;
+    grid-gap: 20px;
+}
+.product-button a{
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+}
+.product-button .add-bag-btn{
+    background-color: #181818;
+    color: #ffffff;
+}
+.product-button .add-wishlist-btn{
+    background-color: #f1f1f1;
+    color: #252525;
+}
 
+.receive-order,
+.cancel-order {
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
 
+.receive-order {
+	background-color: #b0b435;
+}
 
+.cancel-order {
+	background-color: #dc3545;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.receive-order:hover,
+.cancel-order:hover {
+	color: #ffffff;
+}

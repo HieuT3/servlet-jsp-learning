@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.bookstore.dao.CustomerDAO;
 import com.bookstore.entity.Customer;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class CustomerServices {
 	private CustomerDAO customerDAO;
@@ -98,39 +99,45 @@ public class CustomerServices {
 	}
 	
 	public void registerCustomer() throws ServletException, IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		
 		request.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("email");
 		Customer existedCustomer = customerDAO.findByEmail(email);
-		String message = "";
+		
+		boolean result = existedCustomer == null;
+		
 		if(existedCustomer == null) {
 			Customer customer = new Customer();
 			readFieldCustomer(customer);
 			customerDAO.create(customer);
-			message = "New customer has been created successfully";
-			request.setAttribute("message", message);
-			request.getRequestDispatcher("frontend/message.jsp").forward(request, response);
-		} else {
-			message = "Could not register new customer because the email is already existed";
-			request.setAttribute("message", message);
-			request.getRequestDispatcher("frontend/register_form.jsp").forward(request, response);
+			HttpSession session = request.getSession();
+			session.setAttribute("loggedCustomer", customer);
 		}
+		
+		String resultJSON = objectMapper.writeValueAsString(result);
+		response.setContentType("application/json");
+		response.getWriter().write(resultJSON);
 	}
 	
 	public void doLogin() throws IOException, ServletException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		
 		request.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+
 		Customer customer = customerDAO.checkLogin(email, password);
+		
+		boolean result = customer != null;
 		if(customer != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loggedCustomer", customer);
-			String url = request.getHeader("referer");
-			response.sendRedirect(url);
-		} else {
-			String message = "The email or password error";
-			request.setAttribute("message", message);
-			request.getRequestDispatcher("frontend/login.jsp").forward(request, response);
-		}
+		} 
+		
+		String resultJSON = objectMapper.writeValueAsString(result);
+		response.setContentType("application/json");
+		response.getWriter().write(resultJSON);
 	}
 	
 	public void doLogout() throws IOException {

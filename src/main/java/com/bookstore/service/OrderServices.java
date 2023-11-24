@@ -59,8 +59,9 @@ public class OrderServices {
 		
 		String recipientName = request.getParameter("fullname");
 		String recipientPhone = request.getParameter("phone");
-		System.out.println(recipientName);
 		String shippingAddress = request.getParameter("address");
+		
+		float shippingCost = Float.parseFloat(request.getParameter("shipping-option"));
 		
 		Customer customer = (Customer) request.getSession().getAttribute("loggedCustomer");
 		
@@ -81,12 +82,13 @@ public class OrderServices {
 		bookOrder.setRecipientName(recipientName);
 		bookOrder.setRecipientPhone(recipientPhone);
 		bookOrder.setShippingAddress(shippingAddress);
+		bookOrder.setShippingCost(shippingCost);
 		bookOrder.setCustomer(customer);
 		bookOrder.setOrderDetails(orderDetails);
 		
 		orderDAO.create(bookOrder);
 		
-		response.sendRedirect("./");
+		response.sendRedirect("./view_orders");
 	}
 	
 	public void listOrdersByCustomer() throws ServletException, IOException {

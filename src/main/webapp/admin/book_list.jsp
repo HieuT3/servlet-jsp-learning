@@ -10,6 +10,7 @@
 	<body>
 		<jsp:include page="header.jsp"></jsp:include>
 		
+		<fmt:setLocale value="en_US"/>
 		<div align="center">
 			<h1>Books Management</h1>
 			<h3><a href="new_book">Create new Book</a></h3>

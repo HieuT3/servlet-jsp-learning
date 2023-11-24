@@ -65,35 +65,35 @@
 	    </div>
 	
 	    <!-- Start Cart  -->
-	    <div class="form-checkout cart-box-main">
-	        <div class="container">
-	            <div class="row">
-	                <div class="col-sm-6 col-lg-6 mb-3">
-	                    <div class="checkout-address">
-	                        <div class="title-left">
-	                            <h3>Billing address</h3>
-	                        </div>
-	                        <form class="needs-validation">
+	    <form action="place_order" method="POST">
+		    <div class="form-checkout cart-box-main">
+		        <div class="container">
+		            <div class="row">
+		                <div class="col-sm-6 col-lg-6 mb-3">
+		                    <div class="checkout-address">
+		                        <div class="title-left">
+		                            <h3>Billing address</h3>
+		                        </div>
 	                            <div class="mb-3">
 	                                <label for="username">FullName *</label>
 	                                <div class="input-group">
-	                                    <input type="text" class="form-control" id="username" value="${customer.fullname}" placeholder="" required>
+	                                    <input type="text" class="form-control" id="username" value="${customer.fullname}" name="fullname" placeholder="" required>
 	                                    <div class="invalid-feedback" style="width: 100%;"> Your username is required. </div>
 	                                </div>
 	                            </div>
 	                            <div class="mb-3">
 	                                <label for="email">Email Address *</label>
-	                                <input type="email" class="form-control" id="email" value="${customer.email}" placeholder="">
+	                                <input type="email" class="form-control" id="email" value="${customer.email}" name="email" placeholder="">
 	                                <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
 	                            </div>
 	                            <div class="mb-3">
 	                                <label for="address">Address *</label>
-	                                <input type="text" class="form-control" id="address" ${customer.address} placeholder="" required>
+	                                <input type="text" class="form-control" id="address" value="${customer.address}" name="address" placeholder="" required>
 	                                <div class="invalid-feedback"> Please enter your shipping address. </div>
 	                            </div>
 	                            <div class="mb-3">
 	                                <label for="phone">Phone *</label>
-	                                <input type="text" class="form-control" id="phone" ${customer.phone} placeholder="" required>
+	                                <input type="text" class="form-control" id="phone" value="${customer.phone}" name="phone" placeholder="" required>
 	                                <div class="invalid-feedback"> Please enter your phone. </div>
 	                            </div>
 	                            <hr class="mb-4">
@@ -118,86 +118,90 @@
 		                                </div>
 	                                </div>
 	                            </div>
-	                       </form>
-	                    </div>
-	                </div>
-	                <div class="col-sm-6 col-lg-6 mb-3">
-	                    <div class="row">
-	                        <div class="col-md-12 col-lg-12">
-	                            <div class="shipping-method-box">
-	                                <div class="title-left">
-	                                    <h3>Shipping Method</h3>
-	                                </div>
-	                                <div class="mb-4">
-	                                    <div class="custom-control custom-radio">
-	                                        <input id="shippingOption1" name="shipping-option" value="0" class="custom-control-input shipping" checked="checked" type="radio">
-	                                        <label class="custom-control-label" for="shippingOption1">Standard Delivery</label> <span class="float-right font-weight-bold">FREE</span> </div>
-	                                    <div class="ml-4 mb-2 small">(3-7 business days)</div>
-	                                    <div class="custom-control custom-radio">
-	                                        <input id="shippingOption2" name="shipping-option" value="10.00" class="custom-control-input shipping" type="radio">
-	                                        <label class="custom-control-label" for="shippingOption2">Express Delivery</label> <span class="float-right font-weight-bold">$10.00</span> </div>
-	                                    <div class="ml-4 mb-2 small">(2-4 business days)</div>
-	                                    <div class="custom-control custom-radio">
-	                                        <input id="shippingOption3" name="shipping-option" value="20.00" class="custom-control-input shipping" type="radio">
-	                                        <label class="custom-control-label" for="shippingOption3">Next Business day</label> <span class="float-right font-weight-bold">$20.00</span> </div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <div class="col-md-12 col-lg-12">
-	                            <div class="odr-box">
-	                                <div class="title-left">
-	                                    <h3>Shopping cart</h3>
-	                                </div>
-	                                <div style="margin-bottom: 12px;" class="rounded p-2 bg-light">
-	                                    <c:forEach var="item" items="${items}">
-	                                    	<div class="media mb-2 border-bottom">
-		                                        <div class="media-body"> <a href="./view_book?id=${item.key.bookId}"> ${item.key.title}</a>
-		                                            <div style="font-size: 16px;" class="large text-muted">Price: $${item.key.price} <span class="mx-2">|</span> Qty: ${item.value} <span class="mx-2">|</span> Subtotal: $<fmt:formatNumber value="${item.key.price * item.value}"></fmt:formatNumber></div>
-		                                        </div>
-		                                    </div>
-	                                    </c:forEach>
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <div class="col-md-12 col-lg-12">
-	                            <div class="order-box">
-	                                <div class="title-left">
-	                                    <h3>Your order</h3>
-	                                </div>
-	                                <div class="d-flex">
-	                                    <div class="font-weight-bold">Product</div>
-	                                    <div class="ml-auto font-weight-bold">Total</div>
-	                                </div>
-	                                <hr class="my-1">
-	                                <div class="d-flex">
-	                                    <h4>Quantity</h4>
-	                                    <div class="ml-auto font-weight-bold"> ${cart.getTotalQuantity()} </div>
-	                                </div>
-	                                <hr class="my-1">
-	                                <div class="d-flex">
-	                                    <h4>SubTotal</h4>
-	                                    <fmt:formatNumber value="${cart.getTotalAmount()}" type="number" maxFractionDigits="2" var="formattedNumber" />
-	                                    <div class="ml-auto font-weight-bold"> ${formattedNumber} </div>
-	                                </div>
-	                                <hr class="my-1">
-	                                <div class="d-flex">
-	                                    <h4>Shipping Cost</h4>
-	                                    <div id="shipping-cost" class="ml-auto font-weight-bold"> Free </div>
-	                                </div>
-	                                <hr>
-	                                <div class="d-flex gr-total">
-	                                    <h5>Grand Total</h5>
-	                                    <div id="grand-total" data-item="${formattedNumber}" class="ml-auto h5"> $${formattedNumber}</div>
-	                                </div>
-	                                <hr> </div>
-	                        </div>
-	                        <div class="col-12 d-flex shopping-box"> <a href="checkout.html" class="ml-auto btn hvr-hover">Place Order</a> </div>
-	                    </div>
-	                </div>
-	            </div>
-	
-	        </div>
-	    </div>
+		                    </div>
+		                </div>
+		                <div class="col-sm-6 col-lg-6 mb-3">
+		                    <div class="row">
+		                        <div class="col-md-12 col-lg-12">
+		                            <div class="shipping-method-box">
+		                                <div class="title-left">
+		                                    <h3>Shipping Method</h3>
+		                                </div>
+		                                <div class="mb-4">
+		                                    <div class="custom-control custom-radio">
+		                                        <input id="shippingOption1" name="shipping-option" value="0" class="custom-control-input shipping" checked="checked" type="radio">
+		                                        <label class="custom-control-label" for="shippingOption1">Standard Delivery</label> <span class="float-right font-weight-bold">FREE</span> </div>
+		                                    <div class="ml-4 mb-2 small">(3-7 business days)</div>
+		                                    <div class="custom-control custom-radio">
+		                                        <input id="shippingOption2" name="shipping-option" value="10.00" class="custom-control-input shipping" type="radio">
+		                                        <label class="custom-control-label" for="shippingOption2">Express Delivery</label> <span class="float-right font-weight-bold">$10.00</span> </div>
+		                                    <div class="ml-4 mb-2 small">(2-4 business days)</div>
+		                                    <div class="custom-control custom-radio">
+		                                        <input id="shippingOption3" name="shipping-option" value="20.00" class="custom-control-input shipping" type="radio">
+		                                        <label class="custom-control-label" for="shippingOption3">Next Business day</label> <span class="float-right font-weight-bold">$20.00</span> </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                        <div class="col-md-12 col-lg-12">
+		                            <div class="odr-box">
+		                                <div class="title-left">
+		                                    <h3>Shopping cart</h3>
+		                                </div>
+		                                <div style="margin-bottom: 12px;" class="rounded p-2 bg-light">
+		                                    <c:forEach var="item" items="${items}">
+		                                    	<div class="media mb-2 border-bottom">
+			                                        <div class="media-body"> <a href="./view_book?id=${item.key.bookId}"> ${item.key.title}</a>
+			                                            <div style="font-size: 16px;" class="large text-muted">Price: $${item.key.price} <span class="mx-2">|</span> Qty: ${item.value} <span class="mx-2">|</span> Subtotal: $<fmt:formatNumber value="${item.key.price * item.value}"></fmt:formatNumber></div>
+			                                        </div>
+			                                    </div>
+		                                    </c:forEach>
+		                                </div>
+		                            </div>
+		                        </div>
+		                        <div class="col-md-12 col-lg-12">
+		                            <div class="order-box">
+		                                <div class="title-left">
+		                                    <h3>Your order</h3>
+		                                </div>
+		                                <div class="d-flex">
+		                                    <div class="font-weight-bold">Product</div>
+		                                    <div class="ml-auto font-weight-bold">Total</div>
+		                                </div>
+		                                <hr class="my-1">
+		                                <div class="d-flex">
+		                                    <h4>Quantity</h4>
+		                                    <div class="ml-auto font-weight-bold"> ${cart.getTotalQuantity()} </div>
+		                                </div>
+		                                <hr class="my-1">
+		                                <div class="d-flex">
+		                                    <h4>SubTotal</h4>
+		                                    <fmt:formatNumber value="${cart.getTotalAmount()}" type="number" maxFractionDigits="2" var="formattedNumber" />
+		                                    <div class="ml-auto font-weight-bold"> ${formattedNumber} </div>
+		                                </div>
+		                                <hr class="my-1">
+		                                <div class="d-flex">
+		                                    <h4>Shipping Cost</h4>
+		                                    <div id="shipping-cost" class="ml-auto font-weight-bold"> Free </div>
+		                                </div>
+		                                <hr>
+		                                <div class="d-flex gr-total">
+		                                    <h5>Grand Total</h5>
+		                                    <div id="grand-total" data-item="${formattedNumber}" class="ml-auto h5"> $${formattedNumber}</div>
+		                                </div>
+		                                <hr> 
+		                           </div>
+		                        </div>
+		                        <div class="col-12 d-flex shopping-box"> 
+		                        	<div class="update-box">
+				                        <input class="place-order-btn" value="Place Order" type="submit">
+				                    </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>		
+		        </div>
+		    </div>
+		</form>
 	    <!-- End Cart -->
 	      
 	    <jsp:include page="footer.jsp"></jsp:include>

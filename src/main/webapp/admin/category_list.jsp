@@ -10,6 +10,7 @@
 	<body>
 		<jsp:include page="header.jsp"></jsp:include>
 		
+		<fmt:setLocale value="en_US"/>
 		<div align="center">
 			<h1>Category Management</h1>
 			<h3><a href="category_form.jsp">Create new Category</a></h3>

@@ -10,6 +10,7 @@
 	<body>
 		<jsp:include page="header.jsp"></jsp:include>
 		
+		<fmt:setLocale value="en_US"/>
 		<div align="center">
 			<h1>Book Order Management</h1>
 		</div>
@@ -39,7 +40,7 @@
 						<td>${bookOrder.orderId}</td>
 						<td>${bookOrder.customer.fullname}</td>
 						<td>${bookOrder.bookCopies}</td>
-						<td>$<fmt:formatNumber value="${bookOrder.total}"></fmt:formatNumber></td>
+						<td>$<fmt:formatNumber value="${bookOrder.total + bookOrder.shippingCost}"></fmt:formatNumber></td>
 						<td>${bookOrder.paymentMethod}</td>
 						<td>${bookOrder.status}</td>
 						<td>${bookOrder.orderDate}</td>

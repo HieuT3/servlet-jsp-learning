@@ -102,7 +102,82 @@ loginBtn.addEventListener("click", (e) => {
   formContainer.classList.remove("active");
 });
 
-var profileBtn = document.querySelector('.acc-profile');
-profileBtn.addEventListener('click', function(){
-	window.location.href = 'view_profile';
+
+$(document).ready(function(){
+	$('.signInForm').on('submit', function(event){
+		event.preventDefault();
+		var email = document.querySelector('.email-login').value;
+		var password = document.querySelector('.pass-login').value;
+		
+		$.ajax({
+			url: 'login',
+			type: 'POST',
+			async: false,
+			data: {
+				'email': email,
+				'password': password
+			},
+			success: function(data) {
+				var result = JSON.parse(data);
+				if(result == true) {
+					location.reload();
+				} else {
+					setTimeout(function(){
+						document.querySelector('.alert-form-signin').style.display = 'flex';
+					}, 1000);
+					
+				}
+			},
+			error: function() {
+			}
+		});
+	});
+	
+	$('.signUpForm').on('submit', function(event){
+		event.preventDefault();
+		var name = document.querySelector('.name-signup').value;
+		var email = document.querySelector('.email-signup').value;
+		var password = document.querySelector('.pass-signup').value;
+		var rePassword = document.querySelector('.re-pass-signup').value;
+		
+		if(password != rePassword) {
+			setTimeout(function(){
+				document.querySelector('.signup-failed-content').textContent = 'Passwords do not match. Please enter matching passwords.';
+				document.querySelector('.alert-form-signup').style.display = 'flex';
+			}, 1000);
+			return;
+		}
+		
+		$.ajax({
+			url: 'register_customer',
+			type: 'POST',
+			async: false,
+			data: {
+				'fullname': name,
+				'email': email,
+				'password': password
+			},
+			success: function(data) {
+				var result = JSON.parse(data);
+				if(result == true) {
+					location.reload();
+				} else {
+					setTimeout(function(){
+						document.querySelector('.signup-failed-content').textContent = 'There was a problem creating your account. Check that your email address is spelled correctly.';
+						document.querySelector('.alert-form-signup').style.display = 'flex'
+					}, 1000);
+				}
+			},
+			error: function() {
+			}
+		});
+	});
 });
+
+
+var profileBtn = document.querySelector('.acc-profile');
+if(profileBtn != null) {
+	profileBtn.addEventListener('click', function(){
+		window.location.href = 'view_profile';
+	});
+}

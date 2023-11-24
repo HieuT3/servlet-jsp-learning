@@ -10,6 +10,7 @@
 	<body>
 		<jsp:include page="header.jsp"></jsp:include>
 		
+		<fmt:setLocale value="en_US"/>
 		<div align="center">
 			<h1>Edit Order ID: ${bookOrder.orderId}</h1>
 		</div>
@@ -51,7 +52,7 @@
 								<option>Processing</option>
 								<option>Shipping</option>
 								<option>Completed</option>
-								<option>Canceled</option>
+								<option>Cancelled</option>
 							</select>
 						</td>
 					</tr>

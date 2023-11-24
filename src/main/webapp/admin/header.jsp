@@ -1,8 +1,5 @@
 <div align="center">
 	<div>
-		<a href="../admin/"><img src="../images/BookstoreAdminLogo.png"/></a>
-	</div>
-	<div>
 		Welcome, ${sessionScope.useremail} | <a href="./logout">Logout</a>
 	</div>
 	<br/>

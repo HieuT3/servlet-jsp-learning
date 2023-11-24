@@ -22,7 +22,7 @@
 					</c:if>
 					<c:if test="${sessionScope.loggedCustomer != null}">
 						<div class="my-account">
-							<a href="#" class="acc-hover">
+							<a class="acc-hover">
 								<div class="profile">
 									<i class="fas fa-user avatar"></i>
 								</div>
@@ -34,6 +34,7 @@
                                 		<div class="acc-email">${sessionScope.loggedCustomer.email}</div>
                                 	</div>
                                 </li>
+                                <li><a href="view_orders">My Order</a></li>
                                 <li><a href="logout">Logout</a></li>
                             </ul>
 						</div>
@@ -80,7 +81,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li class="nav-item active"><a class="nav-link" href="./">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./">Trang chủ</a></li>
                     <li class="nav-item"><a class="nav-link" href="./about-us">Về chúng tôi</a></li>
                     <li class="nav-item"><a class="nav-link" href="./list_books">Sản phẩm</a></li>
                     <li class="nav-item"><a class="nav-link" href="gallery.html">Trưng bày</a></li>
@@ -155,56 +156,76 @@
 <!-- End Top Search -->
 
 <div class="modal" id="modal-form">
-  <div class="form_container">
-    <i class="fas fa-times form_close"></i>
-    <!-- Login From -->
-    <div class="form login_form">
-      <form action="login" method="post">
-        <h2><b>Login</b></h2>
-        <div class="input_box">
-          <input type="email" name="email" placeholder="Enter your email" required />
-          <i class="far fa-envelope email"></i>
-        </div>
-        <div class="input_box">
-          <input type="password" name="password" placeholder="Enter your password" required />
-          <i class="fas fa-lock password"></i>
-          <i class="far fa-eye-slash pw_hide"></i>
-        </div>
-        <div class="option_field">
-          <span class="checkbox">
-            <input type="checkbox" id="check" />
-            <label for="check">Remember me</label>
-          </span>
-          <a href="#" class="forgot_pw">Forgot password?</a>
-        </div>
-        <button class="button">Login Now</button>
-        <div class="login_signup"><a href="#" id="signup">Don't have an account? Signup</a></div>
-      </form>
-    </div>
-    <!-- Signup From -->
-    <div class="form signup_form">
-      <form action="register_customer" method="post">
-        <h2>Signup</h2>
-        <div class="input_box">
-          <input type="text" name="fullname" placeholder="Enter your fullname" required />
-          <i class="far fa-user fullname"></i>
-        </div>
-        <div class="input_box">
-          <input type="email" name="email" placeholder="Enter your email" required />
-          <i class="far fa-envelope email"></i>
-        </div>
-        <div class="input_box">
-          <input type="password" name="password" placeholder="Create password" required />
-          <i class="fas fa-lock password"></i>
-          <i class="far fa-eye-slash pw_hide"></i>
-        </div>
-        <div class="input_box">
-          <input type="password" name="rePassword" placeholder="Confirm password" required />
-          <i class="fas fa-lock password"></i>
-        </div>
-        <button class="button">Signup Now</button>
-        <div class="login_signup"><a href="#" id="login">Already have an account? Login</a></div>
-      </form>
+  	<div class="form_container">
+    	<i class="fas fa-times form_close"></i>
+    	
+   		<!-- Login From -->
+    	<div class="form login_form">
+      		<form class="signInForm" action="login" method="post">
+	        	<h2>
+	        		<b>Login</b>
+	        	</h2>
+	        	
+	        	<div class="alert-form-signin">
+					<h3 class="login-failed"><b>There was a problem logging in. Check your email and password or create an account.</b></h3>
+				</div>
+
+	        	<div class="input_box">
+	          		<input type="email" class="email-login" name="email" placeholder="Enter your email" required />
+	          		<i class="far fa-envelope email"></i>
+	        	</div>
+	        	<div class="input_box">
+	          		<input type="password" class="pass-login" name="password" placeholder="Enter your password" required />
+	          		<i class="fas fa-lock password"></i>
+	          		<i class="far fa-eye-slash pw_hide"></i>
+	        	</div>
+	        	<div class="option_field">
+	          		<span class="checkbox">
+		            	<input type="checkbox" id="check" />
+		            	<label for="check">Remember me</label>
+	          		</span>
+	          		<a href="#" class="forgot_pw">Forgot password?</a>
+	        	</div>
+	        	<button type="submit" class="btn-login button">Login Now</button>
+	        	<div class="login_signup">
+	        		<a href="#" id="signup">Don't have an account? Signup</a>
+	        	</div>
+			</form>
+		</div>
+		
+    	<!-- Signup From -->
+    	<div class="form signup_form">
+      		<form class="signUpForm" action="register_customer" method="post">
+        		<h2>Signup</h2>
+        		
+        		<div class="alert-form-signup">
+					<h3 class="signup-failed">
+						<b class="signup-failed-content"></b>
+					</h3>
+				</div>
+        		
+        		<div class="input_box">
+	          		<input type="text" class="name-signup" name="fullname" placeholder="Enter your fullname" required />
+	          		<i class="far fa-user fullname"></i>
+        		</div>
+        		<div class="input_box">
+          			<input type="email" class="email-signup" name="email" placeholder="Enter your email" required />
+          			<i class="far fa-envelope email"></i>
+        		</div>
+        		<div class="input_box">
+					<input type="password" class="pass-signup" name="password" placeholder="Create password" required />
+					<i class="fas fa-lock password"></i>
+					<i class="far fa-eye-slash pw_hide"></i>
+		        </div>
+        		<div class="input_box">
+          			<input type="password" class="re-pass-signup" name="rePassword" placeholder="Confirm password" required />
+          			<i class="fas fa-lock password"></i>
+        		</div>
+        		<button class="button">Signup Now</button>
+       	 		<div class="login_signup">
+       	 			<a href="#" id="login">Already have an account? Login</a>
+       	 		</div>
+      	</form>
     </div>
   </div>
 </div>

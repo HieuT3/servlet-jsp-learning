@@ -3,6 +3,7 @@ package com.bookstore.entity;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -42,10 +43,11 @@ public class BookOrder implements java.io.Serializable {
 	private String recipientName;
 	private String recipientPhone;
 	private String paymentMethod;
+	private float shippingCost;
 	private int bookCopies;
 	private float total;
 	private String status;
-	private Set<OrderDetail> orderDetails = new HashSet<OrderDetail>(0);
+	private Set<OrderDetail> orderDetails = new LinkedHashSet<OrderDetail>(0);
 
 	public BookOrder() {
 	}
@@ -141,6 +143,15 @@ public class BookOrder implements java.io.Serializable {
 
 	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
+	}
+	
+	@Column(name = "shipping_cost", nullable = false)
+	public float getShippingCost() {
+		return this.shippingCost;
+	}
+	
+	public void setShippingCost(float shippingCost) {
+		this.shippingCost = shippingCost;
 	}
 
 	@Column(name = "total", nullable = false, precision = 12, scale = 0)

@@ -10,6 +10,7 @@
 	<body>
 		<jsp:include page="header.jsp"></jsp:include>
 		
+		<fmt:setLocale value="en_US"/>
 		<div align="center">
 			<h1>Details of Order ID: ${bookOrder.orderId}</h1>
 		</div>
@@ -26,8 +27,16 @@
 					<td>${bookOrder.bookCopies}</td>
 				</tr>
 				<tr>
+					<td>Sub Total:</td>
+					<td>$<fmt:formatNumber pattern="0.00" value="${bookOrder.total}"></fmt:formatNumber></td>
+				</tr>
+				<tr>
+					<td>Shipping Cost:</td>
+					<td>$<fmt:formatNumber pattern="0.00" value="${bookOrder.shippingCost}"></fmt:formatNumber></td>
+				</tr>
+				<tr>
 					<td>Total Amount:</td>
-					<td>$${bookOrder.total}</td>
+					<td>$<fmt:formatNumber pattern="0.00" value="${bookOrder.total + bookOrder.shippingCost}"></fmt:formatNumber></td>
 				</tr>
 				<tr>
 					<td>Recipient Name:</td>
@@ -77,9 +86,9 @@
 					</tr>
 				</c:forEach>
 					<tr>
-						<td align="right" colspan="4">TOTAL:</td>
+						<td align="right" colspan="4">SUB TOTAL:</td>
 						<td>${bookOrder.bookCopies}</td>
-						<td><fmt:formatNumber value="${bookOrder.total}"></fmt:formatNumber></td>
+						<td>$<fmt:formatNumber value="${bookOrder.total}"></fmt:formatNumber></td>
 					</tr>
 			</table>
 		</div>
