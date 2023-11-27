@@ -47,7 +47,7 @@ function fetchBook(categoryId) {
                             <ul>
                                 <li><a href="./view_book?id=${book.bookId}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                             </ul>
-                            <a class="cart" href="./add_to_cart?bookId=${book.bookId}">Add to Cart</a>
+                            <a data-item="${book.bookId}" href="./add_to_cart" class="cart">Add to Cart</a>
                         </div>
                     </div>
                     <div class="why-text">
@@ -77,7 +77,7 @@ function fetchBook(categoryId) {
                         <h4><a href="view_book?id=${book.bookId}">${book.title}</a></h4>
                         <h5> <del>$ 60.00</del> ${book.price}</h5>
                         <p class="book-desc">${book.description}</p>
-                        <a class="btn hvr-hover" href="./add_to_cart?bookId=${book.bookId}">Add to Cart</a>
+                        <a data-item="${book.bookId}" class="cart btn hvr-hover" href="./add_to_cart">Add to Cart</a>
                     </div>
                 </div>
             </div>
@@ -89,6 +89,8 @@ function fetchBook(categoryId) {
         
         contentByList.innerHTML = '';
         contentByList.innerHTML = listBookByCategoryByListHTML;
+        
+        modalAddSuccess();
 	});
 }
 
@@ -141,7 +143,7 @@ function fetchSearchBook(keyword) {
                             <ul>
                                 <li><a href="./view_book?id=${book.bookId}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                             </ul>
-                            <a class="cart" href=""./add_to_cart?bookId=${book.bookId}"">Add to Cart</a>
+                            <a data-item="${book.bookId}" class="cart" href="./add_to_cart">Add to Cart</a>
                         </div>
                     </div>
                     <div class="why-text">
@@ -170,7 +172,7 @@ function fetchSearchBook(keyword) {
                         <h4><a href="view_book?id=${book.bookId}">${book.title}</a></h4>
                         <h5> <del>$ 60.00</del> ${book.price}</h5>
                         <p class="book-desc">${book.description}</p>
-                        <a class="btn hvr-hover" href="./add_to_cart?bookId=${book.bookId}">Add to Cart</a>
+                        <a data-item="${book.bookId}" class="cart btn hvr-hover" href="./add_to_cart">Add to Cart</a>
                     </div>
                 </div>
             </div>
@@ -182,6 +184,8 @@ function fetchSearchBook(keyword) {
         
         contentByList.innerHTML = '';
         contentByList.innerHTML = listBookByCategoryByListHTML;
+        
+        modalAddSuccess();
 	});
 }
 
@@ -212,4 +216,33 @@ function delayedSearch(keyword) {
 		
 function hideModal() {
     document.getElementById('modal-load').style.display = 'none';
+}
+
+function modalAddSuccess() {
+	$(document).ready(function(){
+		var addCartBtn = document.querySelectorAll('.cart');
+		addCartBtn.forEach(function(item){
+			item.addEventListener('click', function(event){
+				event.preventDefault();
+				var bookId = this.getAttribute('data-item');
+				
+				$.ajax({
+					type: 'GET',
+					url: 'add_to_cart?bookId=' + bookId,
+					async: false,
+					success: function(data) {
+						var quantity = JSON.parse(data);
+						document.querySelector('.cart-quantity').textContent = quantity;
+						document.getElementById('modal-add-sucess').style.display = 'flex';
+						setTimeout(function(){
+							document.getElementById('modal-add-sucess').style.display = 'none';
+						}, 3000);
+					},
+					error: function() {
+						
+					}
+				});
+			});
+		});
+	});
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.bookstore.controller.frontend.shoppingcart.ShoppingCart;
 import com.bookstore.dao.BookDAO;
 import com.bookstore.entity.Book;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class CartServices {
 	
@@ -39,15 +40,17 @@ public class CartServices {
 		ShoppingCart shoppingCart = (ShoppingCart) request.getSession().getAttribute("cart");
 		BookDAO bookDAO = new BookDAO();
 		Integer bookId = Integer.parseInt(request.getParameter("bookId"));
-		if(bookId > 0) {
-			Book addedBook = bookDAO.get(bookId);
-			shoppingCart.addItem(addedBook);
-		} else {
-			Book minusedBook = bookDAO.get(bookId * (-1));
-			shoppingCart.minusItem(minusedBook);
-		}
+		Book addedBook = bookDAO.get(bookId);
+		shoppingCart.addItem(addedBook);
 		request.getSession().setAttribute("cart", shoppingCart);
-		response.sendRedirect("./view_cart");
+		
+		int quantity = shoppingCart.getTotalQuantity();
+		ObjectMapper mapper = new ObjectMapper();
+		String quantityJson = mapper.writeValueAsString(quantity);
+		System.out.println(quantityJson);
+		
+		response.setContentType("application/json");
+		response.getWriter().write(quantityJson);
 	}
 	
 	public void deleteItem() throws ServletException, IOException {

@@ -1,3 +1,36 @@
+window.addEventListener('load', function(){
+	modalAddSuccess();
+});
+
+function modalAddSuccess() {
+	$(document).ready(function(){
+		var addCartBtn = document.querySelectorAll('.cart');
+		addCartBtn.forEach(function(item){
+			item.addEventListener('click', function(event){
+				event.preventDefault();
+				var bookId = this.getAttribute('data-item');
+				
+				$.ajax({
+					type: 'GET',
+					url: 'add_to_cart?bookId=' + bookId,
+					async: false,
+					success: function(data) {
+						var quantity = JSON.parse(data);
+						document.querySelector('.cart-quantity').textContent = quantity;
+						document.getElementById('modal-add-sucess').style.display = 'flex';
+						setTimeout(function(){
+							document.getElementById('modal-add-sucess').style.display = 'none';
+						}, 3000);
+					},
+					error: function() {
+						
+					}
+				});
+			});
+		});
+	});
+}
+
 var searchBtn = document.getElementById('search_btn');
 if(searchBtn) {
 	searchBtn.onclick = function(event) {

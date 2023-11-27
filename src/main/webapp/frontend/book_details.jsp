@@ -85,7 +85,7 @@
 	            
 	            <!--btn-->
 	            <div class="product-button">
-	                <a href="./add_to_cart?bookId=${book.bookId}" class="add-bag-btn">Add To Cart</a>
+	                <a data-item="${book.bookId}" href="./add_to_cart" class="cart add-bag-btn">Add To Cart</a>
 	                <a data-item="${book.bookId}" href="./checkout" class="buy-now-btn add-wishlist-btn">Buy Now</a>
 	            </div>
 	        </div>

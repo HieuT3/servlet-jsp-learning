@@ -94,9 +94,9 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-12 col-sm-12">
 					<div class="footer-top-box">
-						<h3>Mở cửa</h3>
+						<h3>Open</h3>
 						<ul class="list-time">
-							<li>Tất cả các ngày trong tuần</li> <li>Từ 8 a.m đến 10 p.m </li>
+							<li>All days of the week</li> <li>From 8 a.m to 10 p.m</li>
 						</ul>
 					</div>
 				</div>
@@ -139,7 +139,7 @@
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="footer-link">
-                        <h4>Thông tin chi tiết</h4>
+                        <h4>DETAILS</h4>
                         <ul>
                             <li><a href="about.html">Về chúng tôi</a></li>
                             <li><a href="#">Customer Service</a></li>
@@ -155,7 +155,7 @@
                         <h4>Contact Us</h4>
                         <ul>
                             <li>
-                                <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston Street Wichita,<br> KS 67213 </p>
+                                <p><i class="fas fa-map-marker-alt"></i>Address: HVCNBCVT </p>
                             </li>
                             <li>
                                 <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705 770</a></p>

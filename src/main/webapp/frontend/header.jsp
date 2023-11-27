@@ -10,8 +10,8 @@
                 </div>
                 <div class="our-link">
                     <ul>
-                        <li><a href="#"><i class="fas fa-location-arrow"></i> Vị trí</a></li>
-                        <li><a href="#"><i class="fas fa-headset"></i> Liên hệ với chúng tôi</a></li>
+                        <li><a href="#"><i class="fas fa-location-arrow"></i> Location</a></li>
+                        <li><a href="./contact-us"><i class="fas fa-headset"></i> Contact us</a></li>
                     </ul>
                 </div>
             </div>
@@ -81,11 +81,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li class="nav-item"><a class="nav-link" href="./">Trang chủ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./about-us">Về chúng tôi</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./list_books">Sản phẩm</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">Trưng bày</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./contact-us">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./about-us">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./list_books">Product</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contact-us">Contact</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -98,12 +98,12 @@
 							<i class="fa fa-shopping-bag"></i>
 							<c:set var="cart" value="${sessionScope.cart}"></c:set>
 							<c:if test="${cart == null || cart.getTotalQuantity() == 0}">
-								<span class="badge">0</span>
+								<span class="cart-quantity badge">0</span>
 							</c:if>
 							<c:if test="${cart.getTotalQuantity() > 0}">
-								<span class="badge">${cart.getTotalQuantity()}</span>
+								<span class="cart-quantity badge">${cart.getTotalQuantity()}</span>
 							</c:if>
-							<p>Giỏ hàng</p>
+							<p>Cart</p>
 						</a>
 					</li>
                 </ul>
@@ -201,4 +201,11 @@
       	</form>
     </div>
   </div>
+</div>
+
+<div style="background-color: rgba(0, 0, 0, 0);" class="modal" id="modal-add-sucess">
+	<div class="modal-add-wrap">
+		<i class="modal-add-check fas fa-check-circle"></i>
+		<h3 class="modal-add-alert"><b>Product has been added to the cart</b></h3>
+	</div>
 </div>

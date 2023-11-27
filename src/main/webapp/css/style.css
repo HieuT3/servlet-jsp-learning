@@ -2844,6 +2844,26 @@
 }
 
 /*
+	Modal add product success
+*/
+
+.modal-add-wrap {
+	text-align: center; 
+	background-color: rgba(0, 0, 0, 0.7); 
+	padding: 32px;
+}
+
+.modal-add-check {
+	color: #00BFA5; 
+	font-size: 4.2rem;
+}
+
+.modal-add-alert {
+	color: #ffffff; 
+	margin-top: 16px;
+}
+
+/*
 	Modal load search
 */
 

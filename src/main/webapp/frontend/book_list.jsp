@@ -54,7 +54,7 @@
 	        </div>
 	    </div>
 	    <!-- End All Title Box -->
-	
+
 	    <!-- Start Shop Page  -->
 	    <div class="shop-box-inner">
 	        <div class="container">

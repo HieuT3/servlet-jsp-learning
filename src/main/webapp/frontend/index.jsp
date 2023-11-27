@@ -167,7 +167,7 @@
 		                                <ul>
 		                                    <li><a href="view_book?id=${book.bookId}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
 		                                </ul>
-		                                <a class="cart" href="add_to_cart?bookId=${book.bookId}">Add to Cart</a>
+		                                <a data-item="${book.bookId}" class="cart" href="add_to_cart">Add to Cart</a>
 		                            </div>
 		                        </div>
 		                        <div class="why-text">
