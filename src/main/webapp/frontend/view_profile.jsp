@@ -62,6 +62,16 @@
 	        </div>
 	    </div>
 	    <!-- End All Title Box -->
+	    
+	    <div class="alert-success alert-profile message-content">
+	    	<i class="fas fa-check-circle"></i>
+	    	<h3 class="message-alert"><b class="alert-content-success">${message}</b></h3>
+	    </div>
+	    
+	    <div style="background-color: #fcbca0;" class="alert-failed alert-profile message-content">
+	    	<i class="fas fa-exclamation"></i>
+	    	<h3 class="message-alert"><b>Passwords do not match. Please enter matching passwords.</b></h3>
+	    </div>
 
 
 	    <div class="container-profile">
@@ -69,60 +79,62 @@
 				<div class="mx-auto my-auto">
 					<div class="card h-100">
 						<div class="card-body">
-							<div class="row gutters">
-								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-									<h6 class="mb-2 text-primary">Personal Details</h6>
-								</div>
-								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-									<div class="form-group">
-										<label for="fullName">Full Name</label>
-										<input type="text" name="fullname" value="${customer.fullname}" class="form-control" id="fullName" placeholder="Enter full name">
+							<form class="update-profile-form" action="update_profile" method="post">
+								<div class="row gutters">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+										<h1><b>Personal Details</b></h1>
+									</div>
+									<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+										<div class="form-group">
+											<label for="fullName">Full Name</label>
+											<input type="text" name="fullname" value="${customer.fullname}" class="form-control" id="fullName" placeholder="Enter full name">
+										</div>
+									</div>
+									<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+										<div class="form-group">
+											<label for="eMail">Email</label>
+											<input style="pointer-events: none; opacity: 0.7;" type="email" name="email" value="${customer.email}" class="form-control" id="eMail" placeholder="Enter email ID">
+										</div>
+									</div>
+									<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+										<div class="form-group">
+											<label for="phone">Phone</label>
+											<input type="text" name="phone" value="${customer.phone}" class="form-control" id="phone" placeholder="Enter phone number" required>
+										</div>
+									</div>
+									<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+										<div class="form-group">
+											<label for="address">Address</label>
+											<input type="text" name="address" value="${customer.address}" class="form-control" id="address" placeholder="Enter address" required>
+										</div>
 									</div>
 								</div>
-								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-									<div style="" class="form-group">
-										<label for="eMail">Email</label>
-										<input type="email" name="email" value="${customer.email}" class="form-control" id="eMail" placeholder="Enter email ID">
+								<div class="row gutters">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+										<h1><b>Change Password</b></h1>
+									</div>
+									<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+										<div class="form-group">
+											<label for="newPass">New Password</label>
+											<input type="password" class="form-control" id="newPass" name="newPassword" placeholder="Enter new password">
+										</div>
+									</div>
+									<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+										<div class="form-group">
+											<label for="newPassConfirm">New Password Confirm</label>
+											<input type="password" class="form-control" id="newPassConfirm" placeholder="Enter new password confirm">
+										</div>
 									</div>
 								</div>
-								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-									<div class="form-group">
-										<label for="phone">Phone</label>
-										<input type="text" name="phone" value="${customer.phone}" class="form-control" id="phone" placeholder="Enter phone number">
+								<div class="row gutters">
+									<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+										<div class="text-right">
+											<a class="btn btn-secondary" href="./" role="button">Cancel</a>
+											<button style="background-color: #b0b435; border-color: #b0b435;" type="submit" class="btn btn-primary">Update</button>
+										</div>
 									</div>
 								</div>
-								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-									<div class="form-group">
-										<label for="address">Address</label>
-										<input type="text" name="address" value="${customer.address}" class="form-control" id="address" placeholder="Enter address">
-									</div>
-								</div>
-							</div>
-							<div class="row gutters">
-								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-									<h6 class="mt-3 mb-2 text-primary">Change Password</h6>
-								</div>
-								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-									<div class="form-group">
-										<label for="newPass">New Password</label>
-										<input type="password" class="form-control" id="newPass" placeholder="Enter new password">
-									</div>
-								</div>
-								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-									<div class="form-group">
-										<label for="newPassConfirm">New Password Confirm</label>
-										<input type="password" class="form-control" id="newPassConfirm" placeholder="Enter new password confirm">
-									</div>
-								</div>
-							</div>
-							<div class="row gutters">
-								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-									<div class="text-right">
-										<button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
-										<button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
-									</div>
-								</div>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -139,6 +151,7 @@
 	    <script src="js/bootstrap.min.js"></script>
 	    <!-- ALL PLUGINS -->
 	    <script src="js/home.js"></script>
+	    <script src="js/customer.js"></script>
 	    <script src="js/jquery.superslides.min.js"></script>
 	    <script src="js/bootstrap-select.js"></script>
 	    <script src="js/inewsticker.js"></script>

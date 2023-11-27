@@ -150,18 +150,24 @@ public class CustomerServices {
 		request.getRequestDispatcher("frontend/view_profile.jsp").forward(request, response);
 	}
 	
-	public void editProfile() throws ServletException, IOException {
-		request.getRequestDispatcher("frontend/edit_profile.jsp").forward(request, response);
-	}
-	
 	public void updateProfile() throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		Customer customer =(Customer)request.getSession().getAttribute("loggedCustomer");
-		readFieldCustomer(customer);
-		Customer updatedCustomer = customerDAO.update(customer);
-		request.getSession().setAttribute("loggedCustomer", updatedCustomer);
 		
-		String message = "Your profile has been updated successfully";
+		String fullname = request.getParameter("fullname");
+		String phone = request.getParameter("phone");
+		String address = request.getParameter("address");
+		String password = request.getParameter("newPassword");
+		
+		customer.setFullname(fullname);
+		customer.setPhone(phone);
+		customer.setAddress(address);
+		if(password != null) customer.setPassword(password);
+		
+		customerDAO.update(customer);
+		
+		String message = "You have successfully updated your account!";
 		request.setAttribute("message", message);
-		request.getRequestDispatcher("frontend/view_profile.jsp").forward(request, response);
+		request.getRequestDispatcher("./view_profile").forward(request, response);
 	}
 }

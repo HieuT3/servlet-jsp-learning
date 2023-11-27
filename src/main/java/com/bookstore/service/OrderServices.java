@@ -87,6 +87,8 @@ public class OrderServices {
 		bookOrder.setOrderDetails(orderDetails);
 		
 		orderDAO.create(bookOrder);
+
+		cart.clear();
 		
 		response.sendRedirect("./view_orders");
 	}

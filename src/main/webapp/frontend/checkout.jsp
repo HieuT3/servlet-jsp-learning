@@ -59,9 +59,9 @@
 	    </div>
 	    <!-- End All Title Box -->
 	    
-	    <div class="alert-login">
+	    <div class="alert-login message-content">
 	    	<i class="fas fa-exclamation"></i>
-	    	<h3 class="alert-content"><b>Please log in to proceed with checkout!</b></h3>
+	    	<h3 class="message-alert"><b>Please log in to proceed with checkout!</b></h3>
 	    </div>
 	
 	    <!-- Start Cart  -->

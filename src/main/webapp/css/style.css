@@ -550,10 +550,9 @@
   margin-top: 15px;
 }
 
-.alert-login {
-	display: none; 
-	align-items: center; 
-	width: 1140px; 
+.message-content { 
+	display: none;
+	align-items: center;  
 	margin: 40px auto 0 auto; 
 	background-color: #acd2cc; 
 	padding: 12px 20px; 
@@ -561,11 +560,19 @@
 	color: #2D2F31;
 }
 
-.alert-login .alert-content {
+.message-content .message-alert {
 	margin: 0 0 0 10px;
 	padding: 10px 0; 
 	font-size: 20px;
 	display: inline-block;
+}
+
+.alert-login {
+	width: 1140px;
+}
+
+.alert-profile {
+	width: 991px;
 }
 
  .search a{
