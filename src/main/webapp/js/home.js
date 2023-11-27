@@ -181,3 +181,22 @@ if(profileBtn != null) {
 		window.location.href = 'view_profile';
 	});
 }
+
+$(document).ready(function() {
+	$('.buy-now-btn').on('click', function(event) {
+		event.preventDefault();
+		var bookId = $(this).attr('data-item');
+
+		$.ajax({
+			type: 'GET',
+			url: 'add_to_cart?bookId=' + bookId,
+			async: false,
+			success: function() {
+				window.location.href = './checkout';
+			},
+			error: function() {
+				
+			}
+		});
+	});
+});

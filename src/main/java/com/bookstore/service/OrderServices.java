@@ -117,4 +117,16 @@ public class OrderServices {
 		request.setAttribute("bookOrder", bookOrder);
 		request.getRequestDispatcher("./order_form.jsp").forward(request, response);
 	}
+	
+	public void receiveOrder() throws ServletException, IOException {
+		Integer orderId = Integer.parseInt(request.getParameter("orderId"));
+		orderDAO.updateOrder(orderId, "Completed");
+		response.sendRedirect("./view_orders");
+	}
+	
+	public void cancelOrder() throws ServletException, IOException {
+		Integer orderId = Integer.parseInt(request.getParameter("orderId"));
+		orderDAO.updateOrder(orderId, "Cancelled");
+		response.sendRedirect("./view_orders");	
+	}
 }

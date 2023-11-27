@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
@@ -111,6 +112,21 @@ public class JpaDAO<E> {
 		Object object = query.getSingleResult();
 		entityManager.close();
 		return object;
+	}
+	
+	public int updateAttribute(String queryName, Map<String, Object> parameters) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+		Query query = entityManager.createNamedQuery(queryName);
+		for(Map.Entry<String, Object> entry : parameters.entrySet()) {
+			query.setParameter(entry.getKey(), entry.getValue());
+		}
+		
+		int updateEnties = query.executeUpdate();
+		transaction.commit();
+		entityManager.close();
+		return updateEnties;
 	}
 	
 	public void close() {

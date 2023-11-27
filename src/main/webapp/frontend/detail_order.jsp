@@ -119,8 +119,13 @@
 		    </div>
 
             <div class="card-footer py-3">
-              <a style="margin-right: 24px;" href="#" class="receive-order">Received</a>
-              <a href="#" class="cancel-order">Cancelled</a>
+            	<c:if test="${(bookOrder.status eq 'Completed') or (bookOrder.status eq 'Cancelled')}">
+            		<a style="margin-right: 24px;" href="#" class="receive-order">Purchase again</a>
+            	</c:if>
+            	<c:if test="${(bookOrder.status eq 'Processing') or (bookOrder.status eq 'Shipping')}">
+            		<a style="margin-right: 24px;" href="./receive_order?orderId=${bookOrder.orderId}" class="receive-order">Received</a>
+	            	<a href="./cancel_order?orderId=${bookOrder.orderId}" class="cancel-order">Cancelled</a>
+            	</c:if>
             </div>
 
           </article>

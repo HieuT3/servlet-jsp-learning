@@ -86,7 +86,7 @@
 	            <!--btn-->
 	            <div class="product-button">
 	                <a href="./add_to_cart?bookId=${book.bookId}" class="add-bag-btn">Add To Cart</a>
-	                <a href="#" class="add-wishlist-btn">Buy Now</a>
+	                <a data-item="${book.bookId}" href="./checkout" class="buy-now-btn add-wishlist-btn">Buy Now</a>
 	            </div>
 	        </div>
 	    </div>
@@ -114,6 +114,5 @@
 		<script src="js/form-validator.min.js"></script>
 		<script src="js/contact-form-script.js"></script>
 		<script src="js/custom.js"></script>
-	</body>
-
+	</body>	
 </html>

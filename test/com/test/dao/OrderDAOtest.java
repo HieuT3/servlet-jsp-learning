@@ -187,4 +187,22 @@ public class OrderDAOtest {
 		
 		assertNull(bookOrder);
 	}
+	
+	@Test
+	public void testReceiveOrder() {
+		Integer orderId = 28;
+		String status = "Completed";
+		int cnt = orderDAO.updateOrder(orderId, status);
+		
+		assertTrue(cnt > 0 && cnt == 1);
+	}
+	
+	@Test
+	public void testCancelOrder() {
+		Integer orderId = 29;
+		String status = "Cancelled";
+		int cnt = orderDAO.updateOrder(orderId, status);
+		
+		assertTrue(cnt > 0 && cnt == 1);
+	}
 }

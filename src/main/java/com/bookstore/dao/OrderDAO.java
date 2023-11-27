@@ -54,5 +54,13 @@ public class OrderDAO extends JpaDAO<BookOrder> implements GenericDao<BookOrder>
 		if(list != null && list.size() > 0) return list.get(0);
 		return null;
 	}
+	
+	public int updateOrder(Object orderId, String status) {
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("orderId", orderId);
+		parameters.put("status", status);
+		
+		return (int) super.updateAttribute("BookOrder.updateStatus", parameters);
+	}
 
 }
