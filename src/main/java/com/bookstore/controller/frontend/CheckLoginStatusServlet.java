@@ -29,7 +29,6 @@ public class CheckLoginStatusServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ObjectMapper objectMapper = new ObjectMapper();
 		Customer customer = (Customer) request.getSession(false).getAttribute("loggedCustomer");
 		String object = "";
 		if(customer != null) object = "object";

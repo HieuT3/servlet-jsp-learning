@@ -90,23 +90,31 @@
 	    <!-- Start Categories  -->
 	    <div class="categories-shop">
 	        <div class="container">
+	        	<div class="row">
+	                <div class="col-lg-12">
+	                    <div class="title-all text-center">
+	                        <h1>Featured Categories</h1>
+	                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
+	                    </div>
+	                </div>
+	            </div>
 	            <div class="row">
 	                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 	                    <div class="shop-cat-box">
-	                        <img class="img-fluid" src="images/categories_img_01.jpg" alt="" />
-	                        <a class="btn hvr-hover" href="#">Sách 1</a>
+	                        <img class="img-fluid" src="images/categories_img_001.jpg" alt="" />
+	                        <a class="btn hvr-hover" href="#">Programming</a>
 	                    </div>
 	                </div>
 	                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 	                    <div class="shop-cat-box">
-	                        <img class="img-fluid" src="images/categories_img_02.jpg" alt="" />
-	                        <a class="btn hvr-hover" href="#">Sách 2</a>
+	                        <img class="img-fluid" src="images/categories_img_002.jpg" alt="" />
+	                        <a class="btn hvr-hover" href="#">Language</a>
 	                    </div>
 	                </div>
 	                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 	                    <div class="shop-cat-box">
-	                        <img class="img-fluid" src="images/categories_img_03.jpg" alt="" />
-	                        <a class="btn hvr-hover" href="#">Sách 3</a>
+	                        <img class="img-fluid" src="images/categories_img_003.jpg" alt="" />
+	                        <a class="btn hvr-hover" href="#">Self-help</a>
 	                    </div>
 	                </div>
 	            </div>
@@ -119,12 +127,12 @@
 				<div class="row">
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						<div class="offer-box-products">
-							<img class="img-fluid" src="images/add-img-01.jpg" alt="" />
+							<img class="img-fluid" src="images/add-img-001.jpg" alt="" />
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						<div class="offer-box-products">
-							<img class="img-fluid" src="images/add-img-02.jpg" alt="" />
+							<img class="img-fluid" src="images/add-img-002.jpg" alt="" />
 						</div>
 					</div>
 				</div>
@@ -155,103 +163,56 @@
 	            </div>
 						
 		        <div class="row special-list">
-		        	<c:forEach var="book" items="${listNewBook}">
-		                <div class="col-lg-3 col-md-6 special-grid best-seller">
-		                    <div class="products-single fix">
-		                        <div class="box-img-hover">
-		                            <div class="type-lb">
-		                                <p class="sale">Sale</p>
-		                            </div>
-		                            <a href=""><img style="width: 260px; height: 350px;" src="data:image/jpg;base64,${book.base64Image}" class="img-fluid" alt="Image"></a>
-		                            <div class="mask-icon">
-		                                <ul>
-		                                    <li><a href="view_book?id=${book.bookId}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-		                                </ul>
-		                                <a data-item="${book.bookId}" class="cart" href="add_to_cart">Add to Cart</a>
-		                            </div>
-		                        </div>
-		                        <div class="why-text">
-		                            <h4><a href="view_book?id=${book.bookId}">${book.title}</a></h4>
-		                            <h5> $${book.price}</h5>
-		                        </div>
-		                    </div>
-		                </div>
+		        	<c:forEach var="book" items="${listNewBook}" varStatus="status">
+		        		<c:if test="${status.index % 2 eq 0}">
+			                <div class="col-lg-3 col-md-6 special-grid best-seller">
+			                    <div class="products-single fix">
+			                        <div class="box-img-hover">
+			                            <div class="type-lb">
+			                                <p class="sale">Sale</p>
+			                            </div>
+			                            <a href=""><img style="width: 260px; height: 350px;" src="data:image/jpg;base64,${book.base64Image}" class="img-fluid" alt="Image"></a>
+			                            <div class="mask-icon">
+			                                <ul>
+			                                    <li><a href="view_book?id=${book.bookId}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+			                                </ul>
+			                                <a data-item="${book.bookId}" class="cart" href="add_to_cart">Add to Cart</a>
+			                            </div>
+			                        </div>
+			                        <div class="why-text">
+			                            <h4><a href="view_book?id=${book.bookId}">${book.title}</a></h4>
+			                            <h5> $${book.price}</h5>
+			                        </div>
+			                    </div>
+			                </div>
+			        	</c:if>
+			        	<c:if test="${status.index % 2 eq 1}">
+			                <div class="col-lg-3 col-md-6 special-grid top-featured">
+			                    <div class="products-single fix">
+			                        <div class="box-img-hover">
+			                            <div class="type-lb">
+			                                <p class="new">New</p>
+			                            </div>
+			                            <a href=""><img style="width: 260px; height: 350px;" src="data:image/jpg;base64,${book.base64Image}" class="img-fluid" alt="Image"></a>
+			                            <div class="mask-icon">
+			                                <ul>
+			                                    <li><a href="view_book?id=${book.bookId}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+			                                </ul>
+			                                <a data-item="${book.bookId}" class="cart" href="add_to_cart">Add to Cart</a>
+			                            </div>
+			                        </div>
+			                        <div class="why-text">
+			                            <h4><a href="view_book?id=${book.bookId}">${book.title}</a></h4>
+			                            <h5> $${book.price}</h5>
+			                        </div>
+			                    </div>
+			                </div>
+			        	</c:if>
 		        	</c:forEach>
 		    	</div>
 	        </div>
 	    </div>
 	    <!-- End Products  -->
-	    
-	    <!-- Start Blog  -->
-	    <div class="latest-blog">
-	        <div class="container">
-	            <div class="row">
-	                <div class="col-lg-12">
-	                    <div class="title-all text-center">
-	                        <h1>latest blog</h1>
-	                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="row">
-	                <div class="col-md-6 col-lg-4 col-xl-4">
-	                    <div class="blog-box">
-	                        <div class="blog-img">
-	                            <img class="img-fluid" src="images/blog-img.jpg" alt="" />
-	                        </div>
-	                        <div class="blog-content">
-	                            <div class="title-blog">
-	                                <h3>Fusce in augue non nisi fringilla</h3>
-	                                <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed mollis. Praesent laoreet lacinia elit id lobortis.</p>
-	                            </div>
-	                            <ul class="option-blog">
-	                                <li><a href="#"><i class="far fa-heart"></i></a></li>
-	                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-	                                <li><a href="#"><i class="far fa-comments"></i></a></li>
-	                            </ul>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="col-md-6 col-lg-4 col-xl-4">
-	                    <div class="blog-box">
-	                        <div class="blog-img">
-	                            <img class="img-fluid" src="images/blog-img-01.jpg" alt="" />
-	                        </div>
-	                        <div class="blog-content">
-	                            <div class="title-blog">
-	                                <h3>Fusce in augue non nisi fringilla</h3>
-	                                <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed mollis. Praesent laoreet lacinia elit id lobortis.</p>
-	                            </div>
-	                            <ul class="option-blog">
-	                                <li><a href="#"><i class="far fa-heart"></i></a></li>
-	                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-	                                <li><a href="#"><i class="far fa-comments"></i></a></li>
-	                            </ul>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="col-md-6 col-lg-4 col-xl-4">
-	                    <div class="blog-box">
-	                        <div class="blog-img">
-	                            <img class="img-fluid" src="images/blog-img-02.jpg" alt="" />
-	                        </div>
-	                        <div class="blog-content">
-	                            <div class="title-blog">
-	                                <h3>Fusce in augue non nisi fringilla</h3>
-	                                <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed mollis. Praesent laoreet lacinia elit id lobortis.</p>
-	                            </div>
-	                            <ul class="option-blog">
-	                                <li><a href="#"><i class="far fa-heart"></i></a></li>
-	                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-	                                <li><a href="#"><i class="far fa-comments"></i></a></li>
-	                            </ul>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	    <!-- End Blog  -->
 	      
 	    <jsp:include page="footer.jsp"></jsp:include>
 	
