@@ -64,6 +64,7 @@ public class BookServices {
 	}
 	
 	public void readBookFields(Book newBook) throws ParseException, IOException, ServletException {
+		request.setCharacterEncoding("UTF-8");
 		Integer categoryId = Integer.parseInt(request.getParameter("category"));
 		Category category = categoryDAO.get(categoryId);
 		String title = request.getParameter("title");
@@ -95,6 +96,7 @@ public class BookServices {
 	}
 	
 	public boolean createBook() throws ParseException, IOException, ServletException  {
+		request.setCharacterEncoding("UTF-8");
 		String title = request.getParameter("title");
 		Book existedBook = bookDAO.findByTitle(title);
 		if(existedBook != null) return false;
@@ -105,6 +107,7 @@ public class BookServices {
 	}
 	
 	public void editBook() throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		Integer bookId = Integer.parseInt(request.getParameter("id"));
 		Book book = bookDAO.get(bookId);
 		List<Category> listCate = categoryDAO.listAll();
@@ -114,6 +117,7 @@ public class BookServices {
 	}
 	
 	public boolean updateBook() throws ParseException, IOException, ServletException {
+		request.setCharacterEncoding("UTF-8");
 		Integer bookId = Integer.parseInt(request.getParameter("bookId"));
 		String title = request.getParameter("title");
 		Book bookById = bookDAO.get(bookId);
@@ -143,6 +147,7 @@ public class BookServices {
 	}
 	
 	public void searchBook() throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String keyword = request.getParameter("keyword");
 		String normalized = Normalizer.normalize(keyword.toLowerCase(), Normalizer.Form.NFD);
 		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");

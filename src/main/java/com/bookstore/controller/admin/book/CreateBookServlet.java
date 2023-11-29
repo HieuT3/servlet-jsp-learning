@@ -17,9 +17,9 @@ import com.bookstore.service.BookServices;
  */
 @WebServlet("/admin/create_book")
 @MultipartConfig(
-		fileSizeThreshold = 1024 * 10, // 10KB
-		maxFileSize = 1024 * 300, // 300KB
-		maxRequestSize = 1024 * 1024 // 1MB
+	    fileSizeThreshold = 1024 * 10, // 10KB
+	    maxFileSize = 1024 * 1024 * 10, // 10MB
+	    maxRequestSize = 1024 * 1024 * 20 // 20MB
 )
 public class CreateBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

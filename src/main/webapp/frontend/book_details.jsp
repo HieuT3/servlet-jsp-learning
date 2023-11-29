@@ -75,12 +75,10 @@
 	            <!--category-->
 	            <h4 class="product-category">${book.category.name}</h4>
 	            <h3>${book.title}</h3>
-	            <h5>By ${book.author}</h5>
+	            <h5 class="font-italic">By <u>${book.author}</u></h5>
 	            <span class="product-price">$${book.price}</span>
 	            <p>
-	            	Algorithms and data structures are much more than abstract concepts. Mastering them enables you to write code that runs faster and more efficiently, which is particularly important for todayââ?¬â?[s web and mobile apps. Take a practical approach to data structures and algorithms, with techniques and real-world scenarios that you can use in your daily production code, with examples in JavaScript, Python, and Ruby. This new and revised second edition features new chapters on recursion, dynamic programming, and using Big O in your daily work.
-					<br/>
-					Use these techniques today to make your code faster and more scalable.
+	            	${book.description}
 	            </p>
 	            
 	            <!--btn-->

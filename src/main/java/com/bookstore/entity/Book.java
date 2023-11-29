@@ -117,7 +117,7 @@ public class Book implements java.io.Serializable {
 		this.category = category;
 	}
 
-	@Column(name = "title", unique = true, nullable = false, length = 128)
+	@Column(name = "title", unique = true, nullable = false, length = 255)
 	public String getTitle() {
 		return this.title;
 	}

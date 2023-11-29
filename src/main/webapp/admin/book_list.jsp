@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Manage Books - Evergreen Bookstore Administration</title>
+		<title>Manage Books - JBookstore Administration</title>
 	</head>
 	<body>
 		<jsp:include page="header.jsp"></jsp:include>
@@ -42,7 +42,7 @@
 						<td>
 							<img src="data:image/jpg;base64,${book.base64Image}" width="84" height="110" />
 						</td>
-						<td>${book.title}</td>
+						<td style="max-width: 400px;">${book.title}</td>
 						<td>${book.author}</td>
 						<td>${book.category.name}</td>
 						<td>$${book.price}</td>
