@@ -102,19 +102,19 @@
 	                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 	                    <div class="shop-cat-box">
 	                        <img class="img-fluid" src="images/categories_img_001.jpg" alt="" />
-	                        <a class="btn hvr-hover" href="#">Programming</a>
+	                        <a class="btn hvr-hover" href="./list_books?categoryId=5">Programming</a>
 	                    </div>
 	                </div>
 	                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 	                    <div class="shop-cat-box">
 	                        <img class="img-fluid" src="images/categories_img_002.jpg" alt="" />
-	                        <a class="btn hvr-hover" href="#">Language</a>
+	                        <a class="btn hvr-hover" href="./list_books?categoryId=6">Language</a>
 	                    </div>
 	                </div>
 	                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 	                    <div class="shop-cat-box">
 	                        <img class="img-fluid" src="images/categories_img_003.jpg" alt="" />
-	                        <a class="btn hvr-hover" href="#">Self-help</a>
+	                        <a class="btn hvr-hover" href="./list_books?categoryId=7">Self-help</a>
 	                    </div>
 	                </div>
 	            </div>

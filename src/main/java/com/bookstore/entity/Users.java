@@ -54,7 +54,7 @@ public class Users {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-
+	
 	public String getEmail() {
 		return email;
 	}
@@ -71,7 +71,7 @@ public class Users {
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
-
+	
 	public String getPassword() {
 		return password;
 	}

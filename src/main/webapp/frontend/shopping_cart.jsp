@@ -94,8 +94,8 @@
 														<img class="img-fluid" src="data:image/jpg;base64,${item.key.base64Image}" alt="" />
 													</a>
 			                                    </td>
-			                                    <td class="name-pr">
-			                                        <a href="#">${item.key.title}</a>
+			                                    <td style="max-width: 400px;" class="name-pr">
+			                                        <a style="white-space: normal;" href="./view_book?id=${item.key.bookId}">${item.key.title}</a>
 			                                    </td>
 			                                    <td class="price-pr">
 			                                        <p>$${item.key.price}</p>

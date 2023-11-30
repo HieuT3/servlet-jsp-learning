@@ -1,6 +1,6 @@
 <div align="center">
 	<div>
-		Welcome, ${sessionScope.useremail} | <a href="./logout">Logout</a>
+		Welcome, ${sessionScope.useremail} | <a href="./">Home</a> | <a href="./logout">Logout</a>
 	</div>
 	<br/>
 	<div>

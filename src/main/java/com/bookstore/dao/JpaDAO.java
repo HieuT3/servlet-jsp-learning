@@ -22,19 +22,12 @@ public class JpaDAO<E> {
 
 	public E create(E entity) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		
 		entityManager.getTransaction().begin();
-		
 		entityManager.persist(entity);
-		
 		entityManager.flush();
-		
 		entityManager.refresh(entity);
-		
 		entityManager.getTransaction().commit();
-		
 		entityManager.close();
-		
 		return entity;
 	}
 	

@@ -44,16 +44,16 @@
 	                <div id="offer-box" class="carouselTicker">
 	                    <ul class="offer-box">
 	                        <li>
-	                            <i class="fab fa-opencart"></i> Săn deal thoải mái, giảm tới 30%
+	                            <i class="fab fa-opencart"></i> Hunt for deals with ease, enjoy up to 30% off.
 	                        </li>
 	                        <li>
-	                            <i class="fab fa-opencart"></i> Mua 2 tặng 1
+	                            <i class="fab fa-opencart"></i> Buy 2, Get 1 Free.
 	                        </li>
 	                        <li>
-	                            <i class="fab fa-opencart"></i> Sách trinh thám giảm tới 20%
+	                            <i class="fab fa-opencart"></i> Programming books, up to 20% off.
 	                        </li>
 	                        <li>
-	                            <i class="fab fa-opencart"></i> Sách khoa học giảm tới 25%
+	                            <i class="fab fa-opencart"></i> Language books, up to 25% off
 	                        </li>
 	                    </ul>
 	                </div>
@@ -84,7 +84,6 @@
                     <li class="nav-item"><a class="nav-link" href="./">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="./about-us">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="./list_books">Product</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="./contact-us">Contact</a></li>
                 </ul>
             </div>

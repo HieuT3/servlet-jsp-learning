@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Manage Users - Evergreen Bookstore Administration</title>
+		<title>Manage Users - JBookstore Administration</title>
 	</head>
 	<body>
 		<jsp:include page="header.jsp"></jsp:include>

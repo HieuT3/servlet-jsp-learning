@@ -65,18 +65,6 @@
 						<td align="right">Address:</td>
 						<td align="left"><input type="text" id="address" name="address" size="20" value="${customer.address}" required/></td> 
 					</tr>
-					<tr>
-						<td align="right">City:</td>
-						<td align="left"><input type="text" id="city" name="city" size="20" value="${customer.city}" required/></td> 
-					</tr>
-					<tr>
-						<td align="right">Zipcode:</td>
-						<td align="left"><input type="text" id="zipcode" name="zipcode" size="20" value="${customer.zipcode}" required/></td> 
-					</tr>
-					<tr>
-						<td align="right">Country:</td>
-						<td align="left"><input type="text" id="country" name="country" size="20" value="${customer.country}" required/></td> 
-					</tr>
 					<tr><td>&nbsp;</td></tr>
 					<tr>
 						<td colspan="2" align="center">

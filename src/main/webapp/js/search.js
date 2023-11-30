@@ -21,7 +21,12 @@ function limitContent(content, limit) {
 	}
 }
 
-window.addEventListener('load', fetchBook(0));
+window.addEventListener('load', function(){
+	var urlParams = new URLSearchParams(window.location.search);
+	var categoryId = urlParams.get('categoryId');
+	if(categoryId == null) fetchBook(0);
+	else delayedFilter(categoryId);
+});
 
 function fetchBook(categoryId) {
 	
