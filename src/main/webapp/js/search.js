@@ -19,6 +19,7 @@ function limitContent(content, limit) {
 		var fullContent = content.join(' ');
 		return fullContent + '.....';
 	}
+	return content;
 }
 
 window.addEventListener('load', function(){
@@ -80,14 +81,15 @@ function fetchBook(categoryId) {
                 <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
                     <div class="why-text full-width">
                         <h4><a href="view_book?id=${book.bookId}">${book.title}</a></h4>
-                        <h5> <del>$ 60.00</del> ${book.price}</h5>
+                        <h5>$${book.price}</h5>
                         <p class="book-desc">${book.description}</p>
                         <a data-item="${book.bookId}" class="cart btn hvr-hover" href="./add_to_cart">Add to Cart</a>
                     </div>
                 </div>
             </div>
          </div>
-        `).join('');
+        `
+        ).join('');
         
         contentByGrid.innerHTML = '';
         contentByGrid.innerHTML = listBookByCategoryByGridHTML;
