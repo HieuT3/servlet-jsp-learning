@@ -132,7 +132,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="footer-widget">
-                        <h4>About Freshshop</h4>
+                        <h4>About BookShop</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 							
                     </div>
@@ -141,7 +141,7 @@
                     <div class="footer-link">
                         <h4>DETAILS</h4>
                         <ul>
-                            <li><a href="about.html">Về chúng tôi</a></li>
+                            <li><a href="about.html">About us</a></li>
                             <li><a href="#">Customer Service</a></li>
                             <li><a href="#">Our Sitemap</a></li>
                             <li><a href="#">Terms &amp; Conditions</a></li>

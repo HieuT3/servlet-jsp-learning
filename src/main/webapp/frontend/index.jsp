@@ -114,7 +114,7 @@
 	                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 	                    <div class="shop-cat-box">
 	                        <img class="img-fluid" src="images/categories_img_003.jpg" alt="" />
-	                        <a class="btn hvr-hover" href="./list_books?categoryId=7">Self-help</a>
+	                        <a class="btn hvr-hover" href="./list_books?categoryId=8">Healthcare</a>
 	                    </div>
 	                </div>
 	            </div>
